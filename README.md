@@ -31,6 +31,4 @@ A modern and responsive personal portfolio website showcasing my projects, skill
 - Git & GitHub
 - Vercel
 
----
 
-## 📂 Folder Structure
