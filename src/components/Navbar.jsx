@@ -37,7 +37,7 @@ const Navbar = () => {
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary rotate-12 absolute -inset-1 blur-lg opacity-40 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <div className="relative w-12 h-12 rounded-xl bg-dark border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="text-2xl font-black text-primary italic tracking-tighter drop-shadow-[0_0_10px_rgba(234,179,8,1)]">HP</span>
+              <span className="text-2xl font-black text-primary italic tracking-tighter drop-shadow-[0_0_10px_rgba(20,184,166,1)]">HP</span>
             </div>
           </div>
         </motion.a>

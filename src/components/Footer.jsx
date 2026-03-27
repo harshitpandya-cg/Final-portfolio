@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="absolute -inset-2 rounded-xl border-[2px] border-dashed border-primary/40 opacity-50 group-hover:opacity-100 group-hover:border-primary transition-all duration-500 animate-[spin_10s_linear_infinite]"></div>
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary rotate-12 absolute -inset-1 blur-md opacity-30 animate-pulse"></div>
               <div className="relative w-10 h-10 rounded-lg bg-dark border border-white/10 flex items-center justify-center">
-                <span className="text-xl font-black text-primary italic tracking-tighter drop-shadow-[0_0_8px_rgba(234,179,8,1)]">HP</span>
+                <span className="text-xl font-black text-primary italic tracking-tighter drop-shadow-[0_0_8px_rgba(20,184,166,1)]">HP</span>
               </div>
             </div>
           </div>

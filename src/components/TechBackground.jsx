@@ -42,7 +42,7 @@ const TechBackground = () => {
               height: size,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              background: 'radial-gradient(circle, rgba(234, 179, 8, 0.08) 0%, rgba(0,0,0,0) 70%)'
+              background: 'radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, rgba(0,0,0,0) 70%)'
             }}
           />
         );

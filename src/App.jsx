@@ -64,7 +64,7 @@ function App() {
                 transition={{ delay: 0.5, duration: 1.5 }}
                 className="overflow-hidden whitespace-nowrap border-r-4 border-primary pr-2 mx-auto inline-block"
               >
-                <span className="text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black text-primary uppercase tracking-widest drop-shadow-[0_0_20px_rgba(234,179,8,0.7)]">
+                <span className="text-3xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black text-primary uppercase tracking-widest drop-shadow-[0_0_20px_rgba(20,184,166,0.7)]">
                   Harshit Pandya
                 </span>
               </motion.div>
@@ -98,7 +98,7 @@ function App() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
-              className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-primary text-dark shadow-[0_0_15px_rgba(234,179,8,0.6)] hover:shadow-[0_0_25px_rgba(234,179,8,1)] transition-shadow cursor-pointer border-2 border-primary"
+              className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-primary text-dark shadow-[0_0_15px_rgba(20,184,166,0.6)] hover:shadow-[0_0_25px_rgba(20,184,166,1)] transition-shadow cursor-pointer border-2 border-primary"
             >
               <ArrowUp size={24} className="font-bold" />
             </motion.button>
