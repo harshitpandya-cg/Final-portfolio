@@ -2,11 +2,33 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ExternalLink, Calendar, MapPin, X, Eye } from 'lucide-react';
 import encodeCert from '../assets/encode.jpg';
+import hackTheSpringCert from '../assets/hack-the-spring.jpeg';
+import suHackathonCert from '../assets/su-hackathon.jpeg';
+import bountyQuestCert from '../assets/Bounty Quest - 2k26.jpg';
+import devHeatCert from '../assets/dev heat 2k26.jpg';
 
 const Certificates = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const certificates = [
+    {
+      title: 'Hack the Spring',
+      organization: 'GEC Gandhinagar',
+      date: '2025',
+      location: 'Gandhinagar, Gujarat',
+      description: 'Participated in the offline hackathon "Hack the Spring", gaining valuable experience in collaborative problem-solving and rapid development.',
+      icon: <Award className="text-primary" size={24} />,
+      image: hackTheSpringCert
+    },
+    {
+      title: 'Bounty Quest 2.0',
+      organization: 'NIT Tiruchirappalli',
+      date: '2025',
+      location: 'Tiruchirappalli, Tamil Nadu',
+      description: 'Participated in Bounty Quest 2.0, an event organized by NIT Tiruchirappalli, showcasing technical skills and innovative thinking.',
+      icon: <Award className="text-secondary" size={24} />,
+      image: bountyQuestCert
+    },
     {
       title: 'SU Hackathon (Bhilwara)',
       organization: 'Rajasthan Bhilwara',
@@ -14,7 +36,7 @@ const Certificates = () => {
       location: 'Bhilwara, Rajasthan',
       description: 'Participated in a 24-hour hackathon, developing innovative tech solutions for regional challenges.',
       icon: <Award className="text-primary" size={24} />,
-      image: null // Add image path if available
+      image: suHackathonCert
     },
     {
       title: 'Electrosphere 2026 (2nd Place)',
@@ -41,7 +63,7 @@ const Certificates = () => {
       location: 'Surat, Gujarat',
       description: 'Participated in intensive coding challenges and collaborative sessions at the regional developer conference.',
       icon: <Award className="text-primary" size={24} />,
-      image: null
+      image: devHeatCert
     }
   ];
 

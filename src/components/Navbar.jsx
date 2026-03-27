@@ -8,19 +8,28 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Scroll listener removed as navbar is no longer sticky
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Certificates', href: '#certificates' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-100 bg-transparent py-6 px-6 md:px-12">
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-dark/80 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5' 
+        : 'bg-transparent py-6'
+    } px-6 md:px-12`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <motion.a 
           href="#" 
