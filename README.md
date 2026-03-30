@@ -5,7 +5,7 @@ A modern and responsive personal portfolio website showcasing my projects, skill
 ---
 
 ## 🚀 Live Demo
-🔗 https://final-portfolio-woad-six.vercel.app/
+🔗 https://harshit-pandya-portfolio.vercel.app/
 
 ---
 
