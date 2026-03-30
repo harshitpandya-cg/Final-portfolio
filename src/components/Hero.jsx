@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
 import harshitPhoto from '../assets/harshit.jpg';
-import resumePdf from '../assets/harshit_pandya_resume__2_ (1).pdf';
+import resumePdf from '../assets/Harshit Pandya Final-Resume.pdf.pdf';
 
 const Hero = () => {
   const heroProfile = harshitPhoto;
