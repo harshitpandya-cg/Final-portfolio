@@ -34,7 +34,7 @@ const Services = () => {
           <motion.h4 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-secondary font-bold tracking-[0.5em] uppercase text-xs mb-6"
+            className="text-secondary font-bold tracking-[0.5em] uppercase text-sm mb-6"
           >
             How I Help
           </motion.h4>

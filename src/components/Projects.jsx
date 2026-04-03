@@ -56,7 +56,7 @@ const Projects = () => {
            <motion.h4 
              initial={{ opacity: 0, y: -10 }}
              whileInView={{ opacity: 1, y: 0 }}
-             className="text-secondary font-bold tracking-[0.3em] uppercase text-xs mb-6"
+             className="text-secondary font-bold tracking-[0.3em] uppercase text-sm mb-6"
            >
              Selection of Work
            </motion.h4>
@@ -80,8 +80,8 @@ const Projects = () => {
               transition={{ duration: 0.6, type: "spring" }}
               className="group relative rounded-[40px] overflow-hidden glass-card border border-white/5 bg-white/2 hover:bg-white/5 transition-all duration-500"
             >
-              <div className="relative aspect-[16/10] overflow-hidden m-4 rounded-[32px]">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75 group-hover:brightness-50" />
+              <div className="relative aspect-[16/10] overflow-hidden m-4 rounded-[32px] transform transition-transform duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[0.98]">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out brightness-[0.6] group-hover:brightness-50" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="flex space-x-6">
                     <motion.a whileHover={{ y: -5 }} href={project.github} target="_blank" className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-dark shadow-2xl">

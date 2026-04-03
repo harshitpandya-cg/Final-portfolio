@@ -146,20 +146,20 @@ const Contact = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Full Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all ring-0 focus:ring-2 focus:ring-primary/20" placeholder="Harshit Pandya" />
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Harshit Pandya" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Email Address</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all ring-0 focus:ring-2 focus:ring-primary/20" placeholder="harshit@example.com" />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="harshit@example.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Subject</label>
-                <input type="text" name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all ring-0 focus:ring-2 focus:ring-primary/20" placeholder="Project Inquiry" />
+                <input type="text" name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Project Inquiry" />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Your Message</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all resize-none ring-0 focus:ring-2 focus:ring-primary/20" placeholder="Tell me about your project..."></textarea>
+                <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] resize-none ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Tell me about your project..."></textarea>
               </div>
               <button disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
                 <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
