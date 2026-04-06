@@ -7,86 +7,6 @@ import suHackathonCert from '../assets/su-hackathon.jpeg';
 import bountyQuestCert from '../assets/Bounty Quest - 2k26.jpg';
 import devHeatCert from '../assets/dev heat 2k26.jpg';
 
-const CertificateCard = ({ cert, idx, setSelectedImage }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  // If there's no image, we don't want to flip
-  const canFlip = !!cert.image;
-
-  return (
-    <div 
-      className="relative h-[500px] w-full [perspective:2000px] group"
-      onMouseEnter={() => canFlip && setIsFlipped(true)}
-      onMouseLeave={() => canFlip && setIsFlipped(false)}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ 
-          rotateY: { duration: 0.8, ease: "circOut" },
-          y: { delay: idx * 0.1, duration: 0.6 } 
-        }}
-        className="relative w-full h-full [transform-style:preserve-3d] will-change-transform"
-      >
-        {/* Front Side */}
-        <div className="absolute inset-0 [backface-visibility:hidden] glass-card p-10 rounded-[40px] flex flex-col justify-between border border-white/5 bg-white/2">
-          <div>
-            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
-              {cert.icon}
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-primary">{cert.title}</h3>
-            <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-6">{cert.organization}</p>
-            <p className="text-white/40 text-sm leading-relaxed mb-8 italic">
-              {cert.description}
-            </p>
-          </div>
-          
-          <div className="pt-6 border-t border-white/5 flex items-center justify-between text-[11px] font-bold text-white/30 uppercase tracking-widest">
-            <div className="flex items-center gap-2">
-              <Calendar size={14} className="text-secondary" />
-              <span>{cert.date}</span>
-            </div>
-            {canFlip && (
-              <div className="flex items-center gap-2 text-primary animate-pulse font-black">
-                <Eye size={14} />
-                <span>Hover to Flip</span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Back Side (Certificate Image) */}
-        {canFlip && (
-          <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] glass-card p-4 rounded-[40px] border border-primary/30 bg-dark/80 overflow-hidden">
-            <div className="w-full h-full relative group/back overflow-hidden rounded-[30px]">
-              <img 
-                src={cert.image} 
-                alt={`${cert.title} Certificate`} 
-                className="w-full h-full object-cover rounded-[30px] transition-transform duration-1000 group-hover/back:scale-110" 
-              />
-              {/* Overlay with View Button */}
-              <div className="absolute inset-0 bg-dark/60 flex flex-col items-center justify-center opacity-0 group-hover/back:opacity-100 transition-all duration-500 backdrop-blur-sm">
-                 <motion.button 
-                   initial={{ y: 20, opacity: 0 }}
-                   whileInView={{ y: 0, opacity: 1 }}
-                   onClick={(e) => { e.stopPropagation(); setSelectedImage(cert.image); }}
-                   className="bg-primary text-white px-8 py-4 rounded-full font-black uppercase text-[11px] tracking-[0.2em] shadow-[0_0_30px_rgba(20,184,166,0.4)] flex items-center gap-3 hover:scale-110 active:scale-95 transition-all cursor-pointer border border-white/20"
-                 >
-                   <ExternalLink size={18} />
-                   View Certificate
-                 </motion.button>
-                 <p className="mt-4 text-[10px] text-white/40 font-bold uppercase tracking-widest">Click to Expand</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </motion.div>
-    </div>
-  );
-};
-
 const Certificates = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -169,12 +89,42 @@ const Certificates = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {certificates.map((cert, idx) => (
-            <CertificateCard 
-              key={cert.title} 
-              cert={cert} 
-              idx={idx} 
-              setSelectedImage={setSelectedImage} 
-            />
+            <motion.div
+              key={cert.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              whileHover={{ y: -10 }}
+              className="glass-card p-10 rounded-[40px] flex flex-col justify-between border border-white/5 bg-white/2 hover:bg-white/5 transition-all duration-500 relative group"
+            >
+              <div>
+                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                  {cert.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-primary">{cert.title}</h3>
+                <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-6">{cert.organization}</p>
+                <p className="text-white/40 text-sm leading-relaxed mb-8 italic">
+                  {cert.description}
+                </p>
+              </div>
+              
+              <div className="pt-6 border-t border-white/5 flex items-center justify-between text-[11px] font-bold text-white/30 uppercase tracking-widest">
+                <div className="flex items-center gap-2">
+                  <Calendar size={14} className="text-secondary" />
+                  <span>{cert.date}</span>
+                </div>
+                {cert.image && (
+                  <button 
+                    onClick={() => setSelectedImage(cert.image)}
+                    className="flex items-center gap-2 text-primary hover:text-white animate-pulse transition-colors font-black cursor-pointer"
+                  >
+                    <Eye size={14} />
+                    <span>View Cert</span>
+                  </button>
+                )}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

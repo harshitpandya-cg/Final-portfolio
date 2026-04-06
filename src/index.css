@@ -4,23 +4,22 @@
   --color-primary: #14b8a6; /* Teal */
   --color-secondary: #10b981; /* Emerald */
   --color-accent: #6366f1; /* Indigo */
-  --color-dark: #000000;
+  --color-dark: var(--bg-color);
+  --color-white: var(--text-color);
 }
 
 :root {
   --bg-color: #030014;
-  --text-color: rgba(255, 255, 255, 0.87);
+  --text-color: #ffffff;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --card-bg: rgba(255, 255, 255, 0.04);
 }
 
 .light {
   --bg-color: #f8fafc;
   --text-color: #0f172a;
-  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-bg: rgba(0, 0, 0, 0.05);
   --glass-border: rgba(0, 0, 0, 0.1);
-  --card-bg: rgba(255, 255, 255, 0.8);
   color-scheme: light;
 }
 
