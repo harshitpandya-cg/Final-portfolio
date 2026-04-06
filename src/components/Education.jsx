@@ -24,7 +24,7 @@ const Education = () => {
     <section id="education" className="py-24 px-6 md:px-12">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h4 className="text-primary font-bold tracking-widest uppercase text-xs">My Journey</h4>
+          <p className="text-primary font-bold tracking-widest uppercase text-xs">My Journey</p>
           <h2 className="text-4xl md:text-5xl font-black text-white mt-4 tracking-tight">Academic Background</h2>
         </div>
 
@@ -45,7 +45,7 @@ const Education = () => {
                  <div className={`absolute top-10 ${idx % 2 === 0 ? 'right-0 -mr-1' : 'left-0 -ml-1'} w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50`}></div>
                  
                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:bg-primary/20 transition-all duration-300">
+                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 lg:group-hover:bg-primary/20 transition-all duration-300">
                        {exp.icon}
                     </div>
                     <div>

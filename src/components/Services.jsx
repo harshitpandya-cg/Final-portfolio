@@ -31,13 +31,13 @@ const Services = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-24">
-          <motion.h4 
+          <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-secondary font-bold tracking-[0.5em] uppercase text-sm mb-6"
           >
             How I Help
-          </motion.h4>
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,23 +55,23 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10 }}
+              whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { y: -10 } : {}}
               className="glass-card p-12 rounded-[50px] group relative overflow-hidden border border-white/5 bg-white/2"
             >
               {/* Animated Glow on hover */}
-              <div className="absolute -inset-24 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-[80px]"></div>
+              <div className="absolute -inset-24 bg-gradient-to-br from-primary/10 to-transparent opacity-0 lg:group-hover:opacity-100 transition-opacity blur-[80px]"></div>
               
               <div className="relative z-10">
-                <div className="bg-white/5 w-20 h-20 rounded-[30px] flex items-center justify-center mb-10 border border-white/10 group-hover:bg-primary/20 transition-all duration-500 group-hover:scale-110 shadow-2xl">
+                <div className="bg-white/5 w-20 h-20 rounded-[30px] flex items-center justify-center mb-10 border border-white/10 lg:group-hover:bg-primary/20 transition-all duration-500 lg:group-hover:scale-110 shadow-2xl">
                   {service.icon}
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-6 group-hover:text-primary transition-colors">{service.title}</h3>
+                <h3 className="text-3xl font-bold text-white mb-6 lg:group-hover:text-primary transition-colors">{service.title}</h3>
                 <p className="text-white/40 text-lg leading-[1.6] mb-12 italic">
                   {service.description}
                 </p>
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 rounded-full bg-primary shadow-lg shadow-primary/50"></div>
-                  <span className="text-[10px] font-black tracking-[0.4em] uppercase text-white/20 group-hover:text-white/40 transition-colors">{service.tag}</span>
+                  <span className="text-[10px] font-black tracking-[0.4em] uppercase text-white/20 lg:group-hover:text-white/40 transition-colors">{service.tag}</span>
                 </div>
               </div>
             </motion.div>

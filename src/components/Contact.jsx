@@ -41,10 +41,10 @@ const Contact = () => {
     });
   };
 
-  const socials = [    { name: 'GitHub', icon: <FaGithub size={20} />, href: 'https://github.com/harshitpandya-cg', color: 'hover:bg-[#333]' },
-    { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/harshitpandya2911/', color: 'hover:bg-[#0077b5]' },
-    { name: 'Twitter', icon: <FaTwitter size={20} />, href: 'https://x.com/HarshitP68223', color: 'hover:bg-[#1da1f2]' },
-    { name: 'YouTube', icon: <FaYoutube size={20} />, href: 'https://www.youtube.com/@harshitpandya2911', color: 'hover:bg-[#ff0000]' },
+  const socials = [    { name: 'GitHub', icon: <FaGithub size={20} />, href: 'https://github.com/harshitpandya-cg', color: 'lg:hover:bg-[#333]' },
+    { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/harshitpandya2911/', color: 'lg:hover:bg-[#0077b5]' },
+    { name: 'Twitter', icon: <FaTwitter size={20} />, href: 'https://x.com/HarshitP68223', color: 'lg:hover:bg-[#1da1f2]' },
+    { name: 'YouTube', icon: <FaYoutube size={20} />, href: 'https://www.youtube.com/@harshitpandya2911', color: 'lg:hover:bg-[#ff0000]' },
   ];
 
   return (
@@ -88,18 +88,18 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center space-x-6 p-4 rounded-3xl group hover:bg-white/5 transition-all">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-primary/20 transition-all duration-300">
+              <div className="flex items-center space-x-6 p-4 rounded-3xl group lg:hover:bg-white/5 transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 lg:group-hover:bg-primary/20 transition-all duration-300">
                   <Mail className="text-primary" size={24} />
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-bold text-white/30 tracking-widest">Email Me</p>
-                  <a href="mailto:harshitpandya073@gmail.com" className="text-xl font-bold text-white hover:text-primary transition-colors">harshitpandya073@gmail.com</a>
+                  <a href="mailto:harshitpandya073@gmail.com" className="text-xl font-bold text-white lg:hover:text-primary transition-colors">harshitpandya073@gmail.com</a>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-6 p-4 rounded-3xl group hover:bg-white/5 transition-all">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-secondary/20 transition-all duration-300">
+              <div className="flex items-center space-x-6 p-4 rounded-3xl group lg:hover:bg-white/5 transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 lg:group-hover:bg-secondary/20 transition-all duration-300">
                   <Phone className="text-secondary" size={24} />
                 </div>
                 <div>
@@ -108,8 +108,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-6 p-4 rounded-3xl group hover:bg-white/5 transition-all">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:bg-accent/20 transition-all duration-300">
+              <div className="flex items-center space-x-6 p-4 rounded-3xl group lg:hover:bg-white/5 transition-all">
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 lg:group-hover:bg-accent/20 transition-all duration-300">
                   <MapPin className="text-accent" size={24} />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ const Contact = () => {
                   href={social.href} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/50 border border-white/10 transition-all duration-300 ${social.color} hover:text-white hover:scale-110`}
+                  className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/50 border border-white/10 transition-all duration-300 ${social.color} lg:hover:text-white lg:hover:scale-110`}
                   aria-label={`Visit my ${social.name}`}
                 >
                   {social.icon}
@@ -162,9 +162,9 @@ const Contact = () => {
                 <label htmlFor="message" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Your Message</label>
                 <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] resize-none ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Tell me about your project..."></textarea>
               </div>
-              <button disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
+              <button disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 lg:hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
                 <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
-                {status === 'idle' && <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                {status === 'idle' && <Send size={20} className="lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1 transition-transform" />}
                 {status === 'success' && <CheckCircle2 size={20} className="text-green-300" />}
                 {status === 'error' && <AlertCircle size={20} className="text-red-300" />}
               </button>

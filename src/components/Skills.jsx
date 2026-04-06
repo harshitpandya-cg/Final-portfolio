@@ -136,29 +136,29 @@ const Skills = () => {
             <motion.div
               key={cat.title}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 
                 y: -10,
                 transition: { duration: 0.3 }
-              }}
+              } : {}}
               className="glass-card p-10 rounded-[40px] border border-white/5 relative group overflow-hidden min-h-[400px] flex flex-col"
             >
               {/* Animated background glow */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-primary/30 transition-all duration-500 text-3xl shadow-xl shadow-black/20">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 lg:group-hover:scale-110 lg:group-hover:bg-white/10 lg:group-hover:border-primary/30 transition-all duration-500 text-3xl shadow-xl shadow-black/20">
                   {cat.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-8 text-white group-hover:text-primary transition-colors duration-300 tracking-tight">{cat.title}</h3>
+                <h3 className="text-2xl font-bold mb-8 text-white lg:group-hover:text-primary transition-colors duration-300 tracking-tight">{cat.title}</h3>
                 <div className="flex flex-wrap gap-3">
                   {cat.skills.map((skill) => (
                     <motion.span 
                       key={skill.name} 
-                      whileHover={{ 
+                      whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 
                         scale: 1.1,
                         backgroundColor: "rgba(255, 255, 255, 0.12)",
                         borderColor: "rgba(255, 255, 255, 0.2)"
-                      }}
+                      } : {}}
                       className="px-4 py-2 rounded-2xl bg-white/5 text-[10px] font-bold tracking-wider uppercase text-white/60 transition-all border border-white/5 cursor-default flex items-center gap-2.5 backdrop-blur-md shadow-sm"
                     >
                       {skill.icon && <span className="flex items-center justify-center">{skill.icon}</span>}

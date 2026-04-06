@@ -45,14 +45,14 @@ const Hero = ({ theme }) => {
              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-[spin_12s_linear_infinite] will-change-transform"></div>
              <div className="absolute inset-4 md:inset-6 rounded-full border-2 border-secondary/20 animate-[spin_18s_linear_infinite_reverse] will-change-transform"></div>
              
-             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/10 overflow-hidden shadow-2xl shadow-primary/20 group-hover:scale-[1.03] transition-all duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform">
+             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/10 overflow-hidden shadow-2xl shadow-primary/20 lg:group-hover:scale-[1.03] transition-all duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform">
                <img 
                  src={heroProfile} 
                  alt="Harshit Pandya Headshot" 
                  width={400}
                  height={400}
                  loading="eager"
-                 className="w-full h-full object-cover transition-all duration-[1000ms] brightness-90 group-hover:brightness-110 group-hover:scale-110" 
+                 className="w-full h-full object-cover transition-all duration-[1000ms] brightness-90 lg:group-hover:brightness-110 lg:group-hover:scale-110" 
                />
              </div>
              
@@ -109,12 +109,12 @@ const Hero = ({ theme }) => {
             transition={{ duration: 0.6, delay: 1 }}
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-5"
           >
-            <a href="#projects" aria-label="Explore my projects" className="w-full sm:w-auto group relative px-10 py-5 rounded-2xl overflow-hidden bg-primary font-black text-white shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1.5 transition-all duration-500 text-center">
+            <a href="#projects" aria-label="Explore my projects" className="w-full sm:w-auto group relative px-10 py-5 rounded-2xl overflow-hidden bg-primary font-black text-white shadow-xl shadow-primary/20 lg:hover:shadow-primary/40 lg:hover:-translate-y-1.5 transition-all duration-500 text-center">
               <span className="relative z-10 flex items-center justify-center tracking-[0.2em] uppercase text-[11px]">
                 Explore Projects
-                <ArrowRight className="ml-3 group-hover:translate-x-1.5 transition-transform duration-500" size={14} aria-hidden="true" />
+                <ArrowRight className="ml-3 lg:group-hover:translate-x-1.5 transition-transform duration-500" size={14} aria-hidden="true" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 lg:group-hover:opacity-100 transition-opacity duration-700"></div>
             </a>
             
             <a 
@@ -122,9 +122,9 @@ const Hero = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View Harshit Pandya's resume (opens in new tab)"
-              className="w-full sm:w-auto group px-10 py-5 rounded-2xl glass border border-white/10 font-black tracking-[0.2em] uppercase text-[10px] flex items-center justify-center hover:bg-white/10 hover:-translate-y-1 transition-all duration-500 hover:border-white/20"
+              className="w-full sm:w-auto group px-10 py-5 rounded-2xl glass border border-white/10 font-black tracking-[0.2em] uppercase text-[10px] flex items-center justify-center lg:hover:bg-white/10 lg:hover:-translate-y-1 transition-all duration-500 lg:hover:border-white/20"
             >
-               <Eye size={14} className="mr-3 text-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
+               <Eye size={14} className="mr-3 text-primary lg:group-hover:scale-110 transition-transform" aria-hidden="true" />
                View CV
             </a>
 
@@ -132,9 +132,9 @@ const Hero = ({ theme }) => {
               href={resumePdf} 
               download="Harshit_Pandya_Resume.pdf"
               aria-label="Download Harshit Pandya's resume as PDF"
-              className="w-full sm:w-auto group px-10 py-5 rounded-2xl glass border border-white/10 font-black tracking-[0.2em] uppercase text-[10px] flex items-center justify-center hover:bg-white/10 hover:-translate-y-1 transition-all duration-500 hover:border-white/20"
+              className="w-full sm:w-auto group px-10 py-5 rounded-2xl glass border border-white/10 font-black tracking-[0.2em] uppercase text-[10px] flex items-center justify-center lg:hover:bg-white/10 lg:hover:-translate-y-1 transition-all duration-500 lg:hover:border-white/20"
             >
-               <Download size={14} className="mr-3 text-secondary group-hover:scale-110 transition-transform" aria-hidden="true" />
+               <Download size={14} className="mr-3 text-secondary lg:group-hover:scale-110 transition-transform" aria-hidden="true" />
                Download CV
             </a>
           </motion.div>

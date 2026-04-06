@@ -95,14 +95,14 @@ const Certificates = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10 }}
-              className="glass-card p-10 rounded-[40px] flex flex-col justify-between border border-white/5 bg-white/2 hover:bg-white/5 transition-all duration-500 relative group"
+              whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { y: -10 } : {}}
+              className="glass-card p-10 rounded-[40px] flex flex-col justify-between border border-white/5 bg-white/2 lg:hover:bg-white/5 transition-all duration-500 relative group"
             >
               <div>
-                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 lg:group-hover:bg-primary/20 transition-all duration-500">
                   {cert.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-primary">{cert.title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 transition-colors lg:group-hover:text-primary">{cert.title}</h3>
                 <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-6">{cert.organization}</p>
                 <p className="text-white/40 text-sm leading-relaxed mb-8 italic">
                   {cert.description}

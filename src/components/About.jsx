@@ -37,7 +37,7 @@ const About = () => {
              transition={{ duration: 1, delay: 0.2 }}
              className="md:w-1/2 flex items-center justify-center relative"
           >
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-[48px] group overflow-hidden border border-white/10 bg-dark/60 backdrop-blur-3xl shadow-2xl shadow-primary/10 p-10 flex flex-col justify-between transition-all duration-700 hover:border-primary/30">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-[48px] group overflow-hidden border border-white/10 bg-dark/60 backdrop-blur-3xl shadow-2xl shadow-primary/10 p-10 flex flex-col justify-between transition-all duration-700 lg:hover:border-primary/30">
               {/* Animated Background Elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
                 <motion.div 
@@ -70,13 +70,13 @@ const About = () => {
                 ].map((item, i) => (
                   <motion.div
                     key={i}
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                    whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' } : {}}
                     className="flex flex-col items-center justify-center p-6 rounded-[32px] bg-white/[0.03] border border-white/5 transition-all duration-500 group/item"
                   >
-                    <div className="mb-4 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500">
+                    <div className="mb-4 lg:group-hover/item:scale-110 lg:group-hover/item:rotate-3 transition-all duration-500">
                       {item.icon}
                     </div>
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/40 group-hover/item:text-white transition-colors">
+                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/40 lg:group-hover/item:text-white transition-colors">
                       {item.label}
                     </span>
                   </motion.div>
