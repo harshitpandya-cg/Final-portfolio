@@ -172,6 +172,11 @@ body {
   50% { opacity: 0.5; transform: scale(1.2); }
 }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .animate-float-bg {
   animation: float-bg infinite ease-in-out;
 }
@@ -182,6 +187,10 @@ body {
 
 .animate-pulse-slow {
   animation: pulse-slow infinite ease-in-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
 }
 
 .will-change-transform {

@@ -35,10 +35,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Hide welcome screen after 3.5 seconds (increased by 1s)
+    // Hide welcome screen after 2.0 seconds (optimized for Speed Index)
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, 3500);
+    }, 2000);
 
     // Track scroll for "Move to Top" button
     const handleScroll = () => {
@@ -64,9 +64,8 @@ const App = () => {
             initial={{ opacity: 1 }}
             exit={{ 
               opacity: 0, 
-              scale: 1.1,
-              filter: "blur(100px)",
-              transition: { duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }
+              scale: 1.05,
+              transition: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }
             }}
             className="fixed inset-0 z-[99999] bg-dark flex items-center justify-center flex-col overflow-hidden"
           >
@@ -152,7 +151,7 @@ const App = () => {
       >
 
         <React.Suspense fallback={null}>
-          <TechBackground theme={theme} />
+          {!showWelcome && <TechBackground theme={theme} />}
         </React.Suspense>
         
         <Navbar theme={theme} toggleTheme={toggleTheme} />

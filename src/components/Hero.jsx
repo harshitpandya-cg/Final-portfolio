@@ -56,11 +56,9 @@ const Hero = ({ theme }) => {
                />
              </div>
              
-             {/* Circular rotating label decoration - Only on Desktop for better TBT */}
-             <motion.div 
-               animate={{ rotate: 360 }}
-               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-               className="absolute -inset-6 md:-inset-10 hidden lg:flex items-center justify-center pointer-events-none"
+             {/* Circular rotating label decoration - Only on Desktop for better TBT - CSS Animated */}
+             <div 
+               className="absolute -inset-6 md:-inset-10 hidden lg:flex items-center justify-center pointer-events-none animate-spin-slow"
              >
                 <svg viewBox="0 0 100 100" className="w-full h-full opacity-10">
                    <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
@@ -70,7 +68,7 @@ const Hero = ({ theme }) => {
                      </textPath>
                    </text>
                 </svg>
-             </motion.div>
+             </div>
           </div>
         </motion.div>
 
