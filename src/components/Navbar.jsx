@@ -25,9 +25,9 @@ const Navbar = ({ theme, toggleTheme }) => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ${
       isScrolled 
-        ? 'bg-dark/40 backdrop-blur-3xl py-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-b border-white/5' 
+        ? 'glass py-3 shadow-xl' 
         : 'bg-transparent py-8'
     } px-6 md:px-12`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -57,7 +57,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="relative text-[11px] font-black uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all duration-500 group"
+              className={`relative text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-500 group nav-link ${theme === 'light' ? 'text-dark/80' : 'text-white/40 hover:text-white'}`}
             >
               {link.name}
               <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500 rounded-full"></span>

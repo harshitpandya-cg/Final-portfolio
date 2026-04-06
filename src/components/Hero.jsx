@@ -1,11 +1,10 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
-import harshitPhoto from '../assets/harshit.jpg';
+const harshitPhoto = "/harshit.jpg";
 import resumePdf from '../assets/Harshit Pandya Final-Resume.pdf.pdf';
 
-const Hero = () => {
+const Hero = ({ theme }) => {
   const heroProfile = harshitPhoto;
 
   return (
@@ -28,8 +27,8 @@ const Hero = () => {
         className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[120px]"
       />
 
-      {/* Modern Center Glow for Legibility */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,transparent_100%)] opacity-40 pointer-events-none"></div>
+      {/* Modern Center Glow for Legibility - Theme Aware */}
+      <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,transparent_100%)] ${theme === 'light' ? 'opacity-5' : 'opacity-40'} pointer-events-none transition-opacity duration-1000`}></div>
 
       <div className="container mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20">
         

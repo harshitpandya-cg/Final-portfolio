@@ -16,11 +16,36 @@
 }
 
 .light {
-  --bg-color: #f8fafc;
+  --bg-color: #f1f5f9;
   --text-color: #0f172a;
-  --glass-bg: rgba(0, 0, 0, 0.05);
-  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
   color-scheme: light;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  border-color: #f1f5f9 !important;
+  background: rgba(20, 184, 166, 0.3);
+}
+
+.light .text-gradient {
+  background: linear-gradient(135deg, #0f766e 0%, #4338ca 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+}
+
+.light .nav-link {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.light .nav-link:hover {
+  color: #0f172a;
 }
 
 :root {

@@ -157,16 +157,18 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      <div className="bg-dark text-white min-h-screen selection:bg-primary selection:text-white relative overflow-x-hidden">
+      <div 
+        className={`min-h-screen selection:bg-primary selection:text-white relative overflow-x-hidden bg-dark text-white transition-colors duration-1000 ease-in-out`}
+      >
 
         <React.Suspense fallback={null}>
-          <TechBackground />
+          <TechBackground theme={theme} />
         </React.Suspense>
         
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
         <main className="relative z-10">
-          <Hero />
+          <Hero theme={theme} />
           
           <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center -mt-20"><div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <About />
