@@ -11,10 +11,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'framer-motion': ['framer-motion'],
-          'lucide-react': ['lucide-react'],
-          'react-icons': ['react-icons', 'react-icons/fa', 'react-icons/si'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('framer-motion')) return 'vendor-framer';
+            if (id.includes('lucide-react')) return 'vendor-lucide';
+            if (id.includes('react-icons')) return 'vendor-icons';
+            return 'vendor';
+          }
         }
       }
     },
