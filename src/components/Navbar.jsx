@@ -66,7 +66,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         </div>
 
         {/* Right Actions */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center">
            <motion.button
              whileHover={{ scale: 1.1, rotate: 15 }}
              whileTap={{ scale: 0.9 }}
@@ -75,9 +75,6 @@ const Navbar = ({ theme, toggleTheme }) => {
            >
              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
            </motion.button>
-           <div className="h-6 w-[1px] bg-white/10"></div>
-           <a href="https://github.com/harshitpandya-cg" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary transition-colors duration-300"><FaGithub size={18} /></a>
-           <a href="https://www.linkedin.com/in/harshitpandya2911/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary transition-colors duration-300"><FaLinkedin size={18} /></a>
         </div>
 
         {/* Mobile Menu Icon & Toggle */}
@@ -129,16 +126,6 @@ const Navbar = ({ theme, toggleTheme }) => {
                 {link.name}
               </motion.a>
             ))}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex space-x-8 mt-12"
-            >
-              <a href="https://github.com/harshitpandya-cg" target="_blank" rel="noopener noreferrer"><FaGithub size={24} className="text-white/40 hover:text-primary transition-colors" /></a>
-              <a href="https://www.linkedin.com/in/harshitpandya2911/" target="_blank" rel="noopener noreferrer"><FaLinkedin size={24} className="text-white/40 hover:text-primary transition-colors" /></a>
-              <a href="https://x.com/HarshitP68223" target="_blank" rel="noopener noreferrer"><FaTwitter size={24} className="text-white/40 hover:text-primary transition-colors" /></a>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
