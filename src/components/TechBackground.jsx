@@ -1,3 +1,6 @@
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+
 const TechBackground = ({ theme }) => {
   const { scrollY } = useScroll();
   const yParallax = useTransform(scrollY, [0, 5000], [0, -200]);
