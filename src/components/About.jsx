@@ -15,7 +15,7 @@ const About = () => {
             className="md:w-1/2 flex flex-col space-y-8"
           >
             <div className="space-y-4">
-              <h4 className="text-secondary font-bold tracking-widest uppercase text-sm">A Bit About Me</h4>
+              <p className="text-secondary font-bold tracking-widest uppercase text-sm">A Bit About Me</p>
               <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
                 Passion for <br className="hidden md:block" />
                 <span className="text-gradient">quality development.</span>

@@ -53,14 +53,14 @@ const Projects = () => {
     <section id="projects" className="py-24 px-6 md:px-12">
       <div className="container mx-auto">
         <div className="text-center mb-24">
-           <motion.h4 
-             initial={{ opacity: 0, y: -10 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             className="text-secondary font-bold tracking-[0.3em] uppercase text-sm mb-6"
-           >
-             Selection of Work
-           </motion.h4>
-           <motion.h2 
+          <motion.p 
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-secondary font-bold tracking-[0.3em] uppercase text-sm mb-6"
+          >
+            Selection of Work
+          </motion.p>
+          <motion.h2 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              className="text-5xl md:text-8xl font-black text-white mt-4 tracking-tight leading-[0.85]"
@@ -91,11 +91,11 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="flex space-x-6">
-                    <motion.a whileHover={{ y: -5 }} href={project.github} target="_blank" className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-dark shadow-2xl">
-                      <FaGithub size={24} />
+                    <motion.a whileHover={{ y: -5 }} href={project.github} target="_blank" className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-dark shadow-2xl" aria-label={`View ${project.title} on GitHub`}>
+                      <FaGithub size={24} aria-hidden="true" />
                     </motion.a>
-                    <motion.a whileHover={{ y: -5 }} href={project.demo} target="_blank" className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white shadow-2xl">
-                      <ArrowUpRight size={24} />
+                    <motion.a whileHover={{ y: -5 }} href={project.demo} target="_blank" className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white shadow-2xl" aria-label={`View ${project.title} live demo`}>
+                      <ArrowUpRight size={24} aria-hidden="true" />
                     </motion.a>
                   </div>
                 </div>

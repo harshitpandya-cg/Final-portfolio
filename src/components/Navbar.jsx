@@ -36,6 +36,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="flex items-center group relative"
+          aria-label="Harshit Pandya Portfolio Home"
         >
           <div className="relative">
             <motion.div 
@@ -70,11 +71,12 @@ const Navbar = ({ theme, toggleTheme }) => {
            <motion.button
              whileHover={{ scale: 1.1, rotate: 15 }}
              whileTap={{ scale: 0.9 }}
-             onClick={toggleTheme}
-             className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary cursor-pointer hover:shadow-[0_0_15px_rgba(20,184,166,0.2)] transition-all"
-           >
-             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-           </motion.button>
+              onClick={toggleTheme}
+              className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary cursor-pointer hover:shadow-[0_0_15px_rgba(20,184,166,0.2)] transition-all"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </motion.button>
         </div>
 
         {/* Mobile Menu Icon & Toggle */}
@@ -91,6 +93,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
             className="text-white/80 hover:text-white transition-colors p-2"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </motion.button>
@@ -110,6 +114,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <button 
               onClick={() => setIsMenuOpen(false)}
               className="absolute top-8 right-8 text-white/60 hover:text-white"
+              aria-label="Close menu"
             >
               <X size={32} />
             </button>
@@ -121,7 +126,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsMenuOpen(false)}
-                className="text-4xl font-black uppercase tracking-widest text-white/40 hover:text-primary transition-all duration-300"
+                className={`text-4xl font-black uppercase tracking-widest transition-all duration-300 ${theme === 'light' ? 'text-dark/40 hover:text-primary' : 'text-white/40 hover:text-primary'}`}
               >
                 {link.name}
               </motion.a>

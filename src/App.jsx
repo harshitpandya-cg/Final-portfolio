@@ -185,6 +185,7 @@ const App = () => {
               whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
               className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-primary/90 text-dark shadow-[0_0_10px_rgba(20,184,166,0.2)] hover:shadow-[0_0_25px_rgba(20,184,166,0.8)] transition-all cursor-pointer border border-primary/20 hover:border-primary/50 backdrop-blur-md"
+              aria-label="Scroll to top"
             >
               <ArrowUp size={24} className="font-bold" />
             </motion.button>

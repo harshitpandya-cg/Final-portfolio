@@ -71,13 +71,13 @@ const Certificates = () => {
     <section id="certificates" className="py-24 px-6 md:px-12 relative overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-24">
-          <motion.h4 
+          <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-6"
           >
             Achievements
-          </motion.h4>
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,8 +118,9 @@ const Certificates = () => {
                   <button 
                     onClick={() => setSelectedImage(cert.image)}
                     className="flex items-center gap-2 text-primary hover:text-white animate-pulse transition-colors font-black cursor-pointer"
+                    aria-label={`View certificate for ${cert.title}`}
                   >
-                    <Eye size={14} />
+                    <Eye size={14} aria-hidden="true" />
                     <span>View Cert</span>
                   </button>
                 )}
@@ -138,6 +139,9 @@ const Certificates = () => {
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-xl flex items-center justify-center p-6 cursor-zoom-out"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Certificate Image Preview"
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}

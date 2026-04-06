@@ -55,13 +55,13 @@ const Contact = () => {
 
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <motion.h4 
+          <motion.p 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-secondary font-bold tracking-widest uppercase text-xs"
           >
             Let's Connect
-          </motion.h4>
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -127,6 +127,7 @@ const Contact = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/50 border border-white/10 transition-all duration-300 ${social.color} hover:text-white hover:scale-110`}
+                  aria-label={`Visit my ${social.name}`}
                 >
                   {social.icon}
                 </a>
@@ -145,21 +146,21 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Full Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Harshit Pandya" />
+                  <label htmlFor="name" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Full Name</label>
+                  <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Harshit Pandya" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Email Address</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="harshit@example.com" />
+                  <label htmlFor="email" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Email Address</label>
+                  <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="harshit@example.com" />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Subject</label>
-                <input type="text" name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Project Inquiry" />
+                <label htmlFor="subject" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Subject</label>
+                <input id="subject" type="text" name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Project Inquiry" />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Your Message</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] resize-none ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Tell me about your project..."></textarea>
+                <label htmlFor="message" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Your Message</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] resize-none ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Tell me about your project..."></textarea>
               </div>
               <button disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
                 <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>

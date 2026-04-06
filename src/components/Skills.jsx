@@ -109,13 +109,13 @@ const Skills = () => {
 
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <motion.h4 
+          <motion.p 
             initial={{ opacity: 0, letterSpacing: "0.5em" }}
             whileInView={{ opacity: 1, letterSpacing: "0.3em" }}
             className="text-primary font-bold tracking-widest uppercase text-sm"
           >
             My Arsenal
-          </motion.h4>
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
