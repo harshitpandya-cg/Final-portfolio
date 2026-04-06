@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -65,20 +64,39 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Right Actions (Optional - could add social icons here) */}
-        <div className="hidden md:flex items-center space-x-6">
+        {/* Right Actions */}
+        <div className="hidden md:flex items-center space-x-8">
+           <motion.button
+             whileHover={{ scale: 1.1, rotate: 15 }}
+             whileTap={{ scale: 0.9 }}
+             onClick={toggleTheme}
+             className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary cursor-pointer hover:shadow-[0_0_15px_rgba(20,184,166,0.2)] transition-all"
+           >
+             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+           </motion.button>
+           <div className="h-6 w-[1px] bg-white/10"></div>
            <a href="https://github.com/harshitpandya-cg" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary transition-colors duration-300"><FaGithub size={18} /></a>
            <a href="https://www.linkedin.com/in/harshitpandya2911/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary transition-colors duration-300"><FaLinkedin size={18} /></a>
         </div>
 
-        {/* Mobile Menu Icon */}
-        <motion.button 
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)} 
-          className="md:hidden text-white/80 hover:text-white transition-colors p-2"
-        >
-          {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
-        </motion.button>
+        {/* Mobile Menu Icon & Toggle */}
+        <div className="flex items-center space-x-4 md:hidden">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleTheme}
+            className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </motion.button>
+          
+          <motion.button 
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            className="text-white/80 hover:text-white transition-colors p-2"
+          >
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}

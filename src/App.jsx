@@ -17,6 +17,20 @@ const TechBackground = React.lazy(() => import('./components/TechBackground'));
 const App = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   useEffect(() => {
     // Hide welcome screen after 3.5 seconds (increased by 1s)
@@ -147,7 +161,7 @@ const App = () => {
           <TechBackground />
         </React.Suspense>
         
-        <Navbar />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
         
         <main className="relative z-10">
           <Hero />

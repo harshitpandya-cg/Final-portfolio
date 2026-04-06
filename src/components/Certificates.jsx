@@ -70,7 +70,7 @@ const Certificates = () => {
   return (
     <section id="certificates" className="py-24 px-6 md:px-12 relative overflow-hidden">
       <div className="container mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <motion.h4 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,44 +87,67 @@ const Certificates = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {certificates.map((cert, idx) => (
-            <motion.div
-              key={cert.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10 }}
-              className="glass-card p-10 rounded-[40px] group border border-white/5 bg-white/2 hover:bg-white/5 transition-all duration-500 flex flex-col justify-between overflow-hidden relative"
-            >
-              <div>
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
-                  {cert.icon}
+            <div key={cert.title} className="relative h-[500px] w-full [perspective:1500px] group">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.6 }}
+                whileHover={cert.image ? { rotateY: 180 } : {}}
+                className="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-[800ms] cursor-help"
+              >
+                {/* Front Side */}
+                <div className="absolute inset-0 [backface-visibility:hidden] glass-card p-10 rounded-[40px] flex flex-col justify-between border border-white/5 bg-white/2">
+                  <div>
+                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:bg-primary/20 transition-all duration-500">
+                      {cert.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{cert.title}</h3>
+                    <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-6">{cert.organization}</p>
+                    <p className="text-white/40 text-sm leading-relaxed mb-8 italic">
+                      {cert.description}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-6 border-t border-white/5 flex items-center justify-between text-[11px] font-bold text-white/30 uppercase tracking-widest">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={14} className="text-secondary" />
+                      <span>{cert.date}</span>
+                    </div>
+                    {cert.image && (
+                      <div className="flex items-center gap-2 text-primary animate-pulse">
+                        <Eye size={14} />
+                        <span>Hover to Flip</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">{cert.title}</h3>
-                <p className="text-xs font-black text-primary uppercase tracking-widest mb-6">{cert.organization}</p>
-                <p className="text-white/40 text-sm leading-relaxed mb-8 italic">
-                  {cert.description}
-                </p>
-              </div>
-              
-              <div className="pt-6 border-t border-white/5 flex items-center justify-between text-[10px] font-bold text-white/30 uppercase tracking-widest">
-                <div className="flex items-center gap-2">
-                  <Calendar size={12} className="text-secondary" />
-                  <span>{cert.date}</span>
-                </div>
+
+                {/* Back Side (Certificate Image) */}
                 {cert.image && (
-                  <button 
-                    onClick={() => setSelectedImage(cert.image)}
-                    className="flex items-center gap-2 text-primary hover:text-white transition-colors cursor-pointer"
-                  >
-                    <Eye size={14} />
-                    <span>View</span>
-                  </button>
+                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] glass-card p-4 rounded-[40px] border border-primary/30 bg-dark/80 overflow-hidden">
+                    <div className="w-full h-full relative group/back overflow-hidden rounded-[30px]">
+                      <img 
+                        src={cert.image} 
+                        alt={`${cert.title} Certificate`} 
+                        className="w-full h-full object-cover rounded-[30px] transition-transform duration-700 group-hover/back:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover/back:opacity-100 transition-opacity">
+                         <button 
+                           onClick={(e) => { e.stopPropagation(); setSelectedImage(cert.image); }}
+                           className="bg-white text-dark px-6 py-3 rounded-full font-black uppercase text-[10px] tracking-widest shadow-2xl flex items-center gap-2 hover:bg-primary hover:text-white transition-all cursor-pointer"
+                         >
+                           <ExternalLink size={14} />
+                           Full View
+                         </button>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
