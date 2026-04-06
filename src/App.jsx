@@ -110,37 +110,27 @@ const App = () => {
                   className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent z-20 origin-center"
                 />
                 <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-none mb-6 flex items-center justify-center">
-                  {["H", "a", "r", "s", "h", "i", "t"].map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
-                      animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                      transition={{ 
-                        delay: 0.4 + (i * 0.08), 
-                        duration: 1, 
-                        ease: [0.22, 1, 0.36, 1] 
-                      }}
-                      className="inline-block hover:text-primary transition-all duration-500 cursor-default"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                    className="flex"
+                  >
+                    {["H", "a", "r", "s", "h", "i", "t"].map((char, i) => (
+                      <span key={i} className="inline-block hover:text-primary transition-all duration-500 cursor-default">{char}</span>
+                    ))}
+                  </motion.div>
                   <span className="inline-block w-6 md:w-12"></span>
-                  {["P", "a", "n", "d", "y", "a"].map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
-                      animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                      transition={{ 
-                        delay: 1.1 + (i * 0.08), 
-                        duration: 1, 
-                        ease: [0.22, 1, 0.36, 1] 
-                      }}
-                      className="inline-block text-gradient hover:scale-105 transition-all duration-500 cursor-default"
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
+                    className="flex text-gradient"
+                  >
+                    {["P", "a", "n", "d", "y", "a"].map((char, i) => (
+                      <span key={i} className="inline-block hover:scale-105 transition-all duration-500 cursor-default">{char}</span>
+                    ))}
+                  </motion.div>
                 </h2>
               </div>
 

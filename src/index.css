@@ -156,14 +156,36 @@ body {
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+@keyframes float-bg {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -30px) scale(1.05); }
+  66% { transform: translate(-15px, 20px) scale(0.98); }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+@keyframes float-bg-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, 15px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.animate-float-bg {
+  animation: float-bg infinite ease-in-out;
+}
+
+.animate-float-bg-slow {
+  animation: float-bg-slow infinite ease-in-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow infinite ease-in-out;
+}
+
+.will-change-transform {
+  will-change: transform, opacity;
 }
 
 * {
