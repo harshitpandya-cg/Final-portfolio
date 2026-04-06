@@ -8,4 +8,16 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'framer-motion': ['framer-motion'],
+          'lucide-react': ['lucide-react'],
+          'react-icons': ['react-icons', 'react-icons/fa', 'react-icons/si'],
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+  }
 })

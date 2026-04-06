@@ -12,8 +12,23 @@ const TechBackground = () => {
   ];
 
   // Moving elements (Optimized for 60fps, no lag)
-  const circles = Array.from({ length: 8 });
-  const dots = Array.from({ length: 15 });
+  // Significantly reduced counts for mobile performance
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const circleCount = isMobile ? 3 : 6;
+  const dotCount = isMobile ? 5 : 12;
+  const techCount = isMobile ? 8 : 16;
+  
+  const circles = Array.from({ length: circleCount });
+  const dots = Array.from({ length: dotCount });
+  const displayTech = technologies.slice(0, techCount);
 
   return (
     <motion.div 
@@ -26,54 +41,54 @@ const TechBackground = () => {
 
       {/* 2. More Visible Floating Rings/Circles */}
       {circles.map((_, i) => {
-        const size = 150 + Math.random() * 300;
-        const dur = 20 + Math.random() * 20;
+        const size = isMobile ? 100 + Math.random() * 150 : 150 + Math.random() * 300;
+        const dur = 25 + Math.random() * 20;
         
         return (
           <motion.div
             key={`circle-${i}`}
             animate={{
-              x: [0, Math.random() * 300 - 150, 0],
-              y: [0, Math.random() * 300 - 150, 0],
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.25, 0.1]
+              x: [0, Math.random() * 200 - 100, 0],
+              y: [0, Math.random() * 200 - 100, 0],
+              scale: [1, 1.1, 1],
+              opacity: [0.1, 0.2, 0.1]
             }}
             transition={{
               duration: dur,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "linear"
             }}
-            className="absolute rounded-full"
+            className="absolute rounded-full will-change-transform"
             style={{
               width: size,
               height: size,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              background: 'radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, rgba(0,0,0,0) 70%)'
+              background: 'radial-gradient(circle, rgba(20, 184, 166, 0.1) 0%, rgba(0,0,0,0) 70%)'
             }}
           />
         );
       })}
 
       {/* 3. Floating Tech Names - Enhanced Visibility */}
-      {technologies.map((tech, idx) => {
-        const startX = Math.random() * 95;
-        const startY = Math.random() * 95;
+      {displayTech.map((tech, idx) => {
+        const startX = Math.random() * 90;
+        const startY = Math.random() * 90;
         
         return (
           <motion.div
             key={`tech-${idx}`}
             animate={{ 
-              opacity: [0.15, 0.4, 0.15],
-              x: [0, Math.random() * 200 - 100, 0],
-              y: [0, Math.random() * 150 - 75, 0],
+              opacity: [0.1, 0.3, 0.1],
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0],
             }}
             transition={{ 
-              duration: 35 + Math.random() * 35, 
+              duration: 40 + Math.random() * 40, 
               repeat: Infinity, 
-              ease: "easeInOut" 
+              ease: "linear" 
             }}
-            className="absolute text-primary/30 font-black text-[11px] md:text-[13px] tracking-[0.5em] uppercase whitespace-nowrap drop-shadow-[0_0_10px_rgba(20,184,166,0.1)]"
+            className="absolute text-primary/20 font-black text-[10px] md:text-[12px] tracking-[0.5em] uppercase whitespace-nowrap will-change-transform"
             style={{ left: `${startX}%`, top: `${startY}%` }}
           >
             {tech}
@@ -81,22 +96,22 @@ const TechBackground = () => {
         );
       })}
 
-      {/* 4. Moving Small Tech Dots (More Frequent & Brighter) */}
+      {/* 4. Moving Small Tech Dots */}
       {dots.map((_, i) => (
         <motion.div
           key={`dot-${i}`}
           animate={{
-            opacity: [0, 0.8, 0],
-            scale: [0.5, 1.5, 0.5],
-            x: [0, Math.random() * 80 - 40, 0],
-            y: [0, Math.random() * 80 - 40, 0],
+            opacity: [0, 0.6, 0],
+            scale: [0.5, 1.2, 0.5],
+            x: [0, Math.random() * 60 - 30, 0],
+            y: [0, Math.random() * 60 - 30, 0],
           }}
           transition={{
-            duration: 3 + Math.random() * 6,
+            duration: 5 + Math.random() * 8,
             repeat: Infinity,
             delay: Math.random() * 5,
           }}
-          className="absolute w-2 h-2 bg-primary/80 rounded-full blur-[1px]"
+          className="absolute w-1.5 h-1.5 bg-primary/60 rounded-full blur-[1px] will-change-transform"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,

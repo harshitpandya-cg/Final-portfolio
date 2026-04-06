@@ -37,35 +37,38 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full md:w-2/5 flex flex-col items-center justify-center order-1 md:order-2"
         >
           <div className="relative w-56 h-56 md:w-[450px] md:h-[450px] group cursor-pointer">
-             {/* Animated border rings - Luxury High-End Feel */}
-             <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-[spin_12s_linear_infinite]"></div>
-             <div className="absolute inset-4 md:inset-6 rounded-full border-2 border-secondary/20 animate-[spin_18s_linear_infinite_reverse]"></div>
+             {/* Animated border rings - Optimized with will-change */}
+             <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-[spin_12s_linear_infinite] will-change-transform"></div>
+             <div className="absolute inset-4 md:inset-6 rounded-full border-2 border-secondary/20 animate-[spin_18s_linear_infinite_reverse] will-change-transform"></div>
              
-             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/10 overflow-hidden shadow-2xl shadow-primary/20 group-hover:scale-[1.03] transition-all duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)]">
+             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/10 overflow-hidden shadow-2xl shadow-primary/20 group-hover:scale-[1.03] transition-all duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform">
                <img 
                  src={heroProfile} 
                  alt="Harshit Pandya Headshot" 
+                 width={400}
+                 height={400}
+                 loading="eager"
                  className="w-full h-full object-cover transition-all duration-[1000ms] brightness-90 group-hover:brightness-110 group-hover:scale-110" 
                />
              </div>
              
-             {/* Circular rotating label decoration */}
+             {/* Circular rotating label decoration - Only on Desktop for better TBT */}
              <motion.div 
                animate={{ rotate: 360 }}
                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-               className="absolute -inset-6 md:-inset-10 hidden md:flex items-center justify-center pointer-events-none"
+               className="absolute -inset-6 md:-inset-10 hidden lg:flex items-center justify-center pointer-events-none"
              >
                 <svg viewBox="0 0 100 100" className="w-full h-full opacity-10">
-                  <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
-                  <text className="text-[6px] font-black uppercase tracking-[0.5em] fill-white">
-                    <textPath href="#circlePath">
-                      Frontend Developer • Full Stack Developer • UI/UX Designer •
-                    </textPath>
-                  </text>
+                   <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
+                   <text className="text-[6px] font-black uppercase tracking-[0.5em] fill-white">
+                     <textPath href="#circlePath">
+                       Frontend Developer • Full Stack Developer • UI/UX Designer •
+                     </textPath>
+                   </text>
                 </svg>
              </motion.div>
           </div>

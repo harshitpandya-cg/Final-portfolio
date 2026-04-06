@@ -25,7 +25,7 @@ const Projects = () => {
       tags: ['HTML', 'CSS', 'JavaScript', 'Logic'],
       github: 'https://github.com/harshitpandya-cg/Chess-game',
       demo: 'https://2-player-chessgame.netlify.app/',
-      image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=60&w=600',
     },
     {
       title: 'DorjeTeas Clone',
@@ -45,7 +45,7 @@ const Projects = () => {
       tags: ['Security', 'Educational', 'Upcoming'],
       github: 'https://github.com/harshitpandya-cg',
       demo: '#',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=60&w=600',
     },
   ];
 
@@ -81,7 +81,14 @@ const Projects = () => {
               className="group relative rounded-[40px] overflow-hidden glass-card border border-white/5 bg-white/2 hover:bg-white/5 transition-all duration-500"
             >
               <div className="relative aspect-[16/10] overflow-hidden m-4 rounded-[32px] transform transition-transform duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[0.98]">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out brightness-[0.6] group-hover:brightness-50" />
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  loading="lazy"
+                  width={600}
+                  height={375}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out brightness-[0.6] group-hover:brightness-50" 
+                />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="flex space-x-6">
                     <motion.a whileHover={{ y: -5 }} href={project.github} target="_blank" className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-dark shadow-2xl">

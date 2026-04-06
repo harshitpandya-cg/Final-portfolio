@@ -41,7 +41,7 @@ const Navbar = () => {
             <motion.div 
               animate={{ rotate: 360 }} 
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }} 
-              className="absolute -inset-2.5 rounded-2xl border border-dashed border-primary/30 opacity-40 group-hover:opacity-100 group-hover:border-primary/60 transition-all duration-700"
+              className="absolute -inset-2.5 rounded-2xl border border-dashed border-primary/30 opacity-40 group-hover:opacity-100 group-hover:border-primary/60 transition-all duration-700 will-change-transform"
             ></motion.div>
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary/40 to-secondary/40 rotate-12 absolute -inset-1 blur-xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
             <div className="relative w-11 h-11 rounded-xl bg-dark border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">

@@ -3,16 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Services from './components/Services';
-import Education from './components/Education';
-import Certificates from './components/Certificates';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import TechBackground from './components/TechBackground';
-import CustomCursor from './components/CustomCursor';
+const About = React.lazy(() => import('./components/About'));
+const Skills = React.lazy(() => import('./components/Skills'));
+const Projects = React.lazy(() => import('./components/Projects'));
+const Services = React.lazy(() => import('./components/Services'));
+const Education = React.lazy(() => import('./components/Education'));
+const Certificates = React.lazy(() => import('./components/Certificates'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const Footer = React.lazy(() => import('./components/Footer'));
+const TechBackground = React.lazy(() => import('./components/TechBackground'));
+
 
 const App = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -142,20 +142,30 @@ const App = () => {
       </AnimatePresence>
 
       <div className="bg-dark text-white min-h-screen selection:bg-primary selection:text-white relative overflow-x-hidden">
-        <CustomCursor className="hidden md:block" />
-        <TechBackground />
+
+        <React.Suspense fallback={null}>
+          <TechBackground />
+        </React.Suspense>
+        
         <Navbar />
+        
         <main className="relative z-10">
           <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Certificates />
-          <Services />
-          <Education />
-          <Contact />
+          
+          <React.Suspense fallback={<div className="h-40 flex items-center justify-center"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
+            <About />
+            <Skills />
+            <Projects />
+            <Certificates />
+            <Services />
+            <Education />
+            <Contact />
+          </React.Suspense>
         </main>
-        <Footer />
+        
+        <React.Suspense fallback={null}>
+          <Footer />
+        </React.Suspense>
 
         {/* Scroll To Top Button */}
         <AnimatePresence>
