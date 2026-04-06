@@ -17,7 +17,9 @@ const TechBackground = React.lazy(() => import('./components/TechBackground'));
 const App = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('theme') || 'dark'; } catch { return 'dark'; }
+  });
 
   useEffect(() => {
     if (theme === 'light') {
