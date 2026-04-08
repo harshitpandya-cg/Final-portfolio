@@ -20,6 +20,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
+    { name: 'Hackathon', href: '#hackathon' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -84,7 +85,8 @@ const Navbar = ({ theme, toggleTheme }) => {
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary"
+            className="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-primary cursor-pointer"
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </motion.button>

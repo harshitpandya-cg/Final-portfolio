@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -49,7 +50,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -145,6 +146,13 @@ body {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
+/* Focus-visible ring for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 .bg-gradient-mesh {
   background-image: 
     radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.05) 0px, transparent 40%),
@@ -194,18 +202,29 @@ body {
 }
 
 .will-change-transform {
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
-* {
-  scroll-behavior: smooth;
-  transition-timing-function: var(--ease-out-expo);
+/* Smooth scroll only for non-motion-sensitive users */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
+/* Remove blanket * transition — too broad, kills performance */
 button, a {
-  transition: all 0.6s var(--ease-out-expo) !important;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .glass, .glass-card {
-  transition: all 0.8s var(--ease-out-expo) !important;
+  transition: background 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+              border-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
+              box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Disable glass-card hover lift on mobile/touch */
+@media (hover: none) {
+  .glass-card:hover {
+    transform: none;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
 }

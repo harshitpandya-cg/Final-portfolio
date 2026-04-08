@@ -9,6 +9,7 @@ const Projects = React.lazy(() => import('./components/Projects'));
 const Services = React.lazy(() => import('./components/Services'));
 const Education = React.lazy(() => import('./components/Education'));
 const Certificates = React.lazy(() => import('./components/Certificates'));
+const HackathonJourney = React.lazy(() => import('./components/HackathonJourney'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 const TechBackground = React.lazy(() => import('./components/TechBackground'));
@@ -35,17 +36,24 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Hide welcome screen after 2.0 seconds (optimized for Speed Index)
+    // Hide welcome screen after 2.0 seconds (optimized for aesthetic experience)
     const timer = setTimeout(() => {
       setShowWelcome(false);
     }, 2000);
 
-    // Track scroll for "Move to Top" button
+    // Track scroll for "Move to Top" button, optimized with ticking
+    let ticking = false;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowScrollTop(window.scrollY > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
@@ -92,14 +100,14 @@ const App = () => {
             <motion.div
               className="text-center relative z-10"
             >
-              <motion.h1 
+              <motion.div 
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="text-sm md:text-lg text-primary/80 font-black uppercase tracking-[0.6em] mb-10"
               >
                 Transforming Ideas Into Digital Experiences
-              </motion.h1>
+              </motion.div>
               
               <div className="relative inline-block px-4">
                 <motion.div
@@ -108,7 +116,7 @@ const App = () => {
                   transition={{ duration: 1.8, ease: [0.65, 0, 0.35, 1], delay: 0.5 }}
                   className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent z-20 origin-center"
                 />
-                <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-none mb-6 flex items-center justify-center">
+                <div className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-none mb-6 flex items-center justify-center">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -130,7 +138,7 @@ const App = () => {
                       <span key={i} className="inline-block hover:scale-105 transition-all duration-500 cursor-default">{char}</span>
                     ))}
                   </motion.div>
-                </h2>
+                </div>
               </div>
 
               <motion.p
@@ -164,6 +172,7 @@ const App = () => {
             <Skills />
             <Projects />
             <Certificates />
+            <HackathonJourney />
             <Services />
             <Education />
             <Contact />

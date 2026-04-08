@@ -162,7 +162,7 @@ const Contact = () => {
                 <label htmlFor="message" className="text-[10px] uppercase font-bold text-white/40 tracking-widest ml-4">Your Message</label>
                 <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows="5" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-3xl focus:outline-none focus:border-primary/50 text-white transition-all duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] resize-none ring-0 focus:ring-4 focus:ring-primary/10" placeholder="Tell me about your project..."></textarea>
               </div>
-              <button disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 lg:hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
+              <button type="submit" aria-label="Send message" disabled={status === 'loading'} className="w-full bg-gradient-to-r from-primary to-secondary py-5 rounded-3xl font-bold text-lg text-white shadow-lg shadow-primary/25 lg:hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center space-x-3 group cursor-pointer active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
                 <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
                 {status === 'idle' && <Send size={20} className="lg:group-hover:translate-x-1 lg:group-hover:-translate-y-1 transition-transform" />}
                 {status === 'success' && <CheckCircle2 size={20} className="text-green-300" />}

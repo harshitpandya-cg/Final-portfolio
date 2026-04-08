@@ -1,16 +1,12 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 
 const TechBackground = ({ theme }) => {
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 5000], [0, -200]);
-
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -18,12 +14,11 @@ const TechBackground = ({ theme }) => {
     'React', 'Node.js', 'Python', 'FastAPI', 'JavaScript', 'Tailwind', 'MongoDB', 'PostgreSQL'
   ];
 
-  // Using CSS animations significantly reduces main-thread work
   const configs = React.useMemo(() => {
     const circleCount = isMobile ? 2 : 4;
     const dotCount = isMobile ? 4 : 8;
     const techCount = isMobile ? 4 : 8;
-    
+
     return {
       circles: Array.from({ length: circleCount }).map((_, i) => ({
         size: isMobile ? 150 + i * 50 : 200 + i * 100,
@@ -49,17 +44,17 @@ const TechBackground = ({ theme }) => {
   }, [isMobile]);
 
   return (
-    <motion.div 
-      style={{ y: yParallax }}
+    <div
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none bg-dark transition-colors duration-1000"
     >
-      {/* 1. Enhanced Radial Baseline */}
-      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.03] to-secondary/[0.03]' : 'from-primary/[0.08] via-transparent to-secondary/[0.08]'}`}></div>
-      
-      {/* 2. Floating Rings/Circles */}
+      {/* Radial Baseline */}
+      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.03] to-secondary/[0.03]' : 'from-primary/[0.08] via-transparent to-secondary/[0.08]'}`} />
+
+      {/* Floating Rings */}
       {configs.circles.map((config, i) => (
         <div
           key={`circle-${i}`}
+          aria-hidden="true"
           className="absolute rounded-full animate-float-bg will-change-transform opacity-10"
           style={{
             width: config.size,
@@ -68,18 +63,19 @@ const TechBackground = ({ theme }) => {
             top: `${config.top}%`,
             animationDuration: `${config.dur}s`,
             animationDelay: `${config.delay}s`,
-            background: `radial-gradient(circle, rgba(20, 184, 166, ${theme === 'light' ? '0.05' : '0.15'}) 0%, rgba(0,0,0,0) 70%)`
+            background: `radial-gradient(circle, rgba(20,184,166,${theme === 'light' ? '0.05' : '0.15'}) 0%, rgba(0,0,0,0) 70%)`
           }}
         />
       ))}
 
-      {/* 3. Floating Tech Names */}
+      {/* Floating Tech Names */}
       {configs.techs.map((tech, idx) => (
         <div
           key={`tech-${idx}`}
+          aria-hidden="true"
           className={`absolute font-black text-[10px] md:text-[12px] tracking-[0.6em] uppercase whitespace-nowrap animate-float-bg-slow will-change-transform ${theme === 'light' ? 'text-primary/10' : 'text-primary/20'}`}
-          style={{ 
-            left: `${tech.left}%`, 
+          style={{
+            left: `${tech.left}%`,
             top: `${tech.top}%`,
             animationDuration: `${tech.dur}s`,
             animationDelay: `${tech.delay}s`
@@ -89,10 +85,11 @@ const TechBackground = ({ theme }) => {
         </div>
       ))}
 
-      {/* 4. Moving Small Tech Dots */}
+      {/* Small Tech Dots */}
       {configs.dots.map((dot, i) => (
         <div
           key={`dot-${i}`}
+          aria-hidden="true"
           className="absolute w-1.5 h-1.5 bg-primary/40 rounded-full blur-[1px] animate-pulse-slow will-change-transform"
           style={{
             left: `${dot.left}%`,
@@ -102,7 +99,7 @@ const TechBackground = ({ theme }) => {
           }}
         />
       ))}
-    </motion.div>
+    </div>
   );
 };
 
