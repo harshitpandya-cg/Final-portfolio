@@ -16,7 +16,8 @@ const TechBackground = React.lazy(() => import('./components/TechBackground'));
 
 
 const App = () => {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+  const [showWelcome, setShowWelcome] = useState(!isMobile);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [theme, setTheme] = useState(() => {
     try { return localStorage.getItem('theme') || 'dark'; } catch { return 'dark'; }
