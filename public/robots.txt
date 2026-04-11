@@ -1,0 +1,4 @@
+user-agent: *
+Allow: /
+
+Sitemap: http://harshit-pandya-portfolio.vercel.app/sitemap.xml
