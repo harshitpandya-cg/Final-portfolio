@@ -1,17 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Cpu, Database, Layout, Terminal, Braces, Binary } from 'lucide-react';
-import { Helmet } from 'react-helmet';
 
 const About = () => {
   return (
     <section id="about" className="py-24 px-6 md:px-12 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-24">
-          <Helmet>
-            <title>More information about harshit pandya</title>
-            <meta name='description' content='More information about harshit'/>
-          </Helmet>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
