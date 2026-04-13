@@ -39,7 +39,7 @@ const Hero = ({ theme }) => {
         
         {/* Identity/Photo Content - Shows first on mobile, right on desktop */}
         <motion.div
-          initial={isMobile ? false : { opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full md:w-2/5 flex flex-col items-center justify-center order-1 md:order-2"
@@ -78,15 +78,15 @@ const Hero = ({ theme }) => {
 
         {/* Text Content - Shows second on mobile, left on desktop */}
         <motion.div
-          initial={isMobile ? false : { opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1"
         >
           <motion.span 
-            initial={isMobile ? false : { opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: isMobile ? 0 : 0.2 }}
+            transition={{ delay: 0.2 }}
             className="px-6 py-2 rounded-full glass border border-white/10 text-[9px] font-black tracking-[0.5em] text-primary uppercase inline-block mb-10 shadow-lg shadow-primary/5"
           >
             Digital Craftsman
@@ -97,9 +97,9 @@ const Hero = ({ theme }) => {
           </h1>
           
           <motion.div
-             initial={isMobile ? false : { opacity: 0 }}
+             initial={{ opacity: 0 }}
              animate={{ opacity: 1 }}
-             transition={{ duration: 2, delay: isMobile ? 0 : 0.8 }}
+             transition={{ duration: 2, delay: 0.8 }}
              className="flex flex-col mb-16 items-center md:items-start"
           >
              <p className="text-lg md:text-2xl text-white/40 font-medium max-w-xl leading-relaxed">

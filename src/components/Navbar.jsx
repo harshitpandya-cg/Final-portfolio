@@ -26,10 +26,10 @@ const Navbar = ({ theme, toggleTheme }) => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ${
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 border-0 ${
       isScrolled 
-        ? 'glass py-3 shadow-xl' 
-        : 'bg-transparent py-8'
+        ? 'bg-[#030014]/90 backdrop-blur-xl py-4' 
+        : 'bg-transparent py-4'
     } px-6 md:px-12`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <motion.a 
