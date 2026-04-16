@@ -10,7 +10,7 @@ const Hero = ({ theme }) => {
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden py-32">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden py-32">
       {/* Background Animated Blobs - Static on mobile for TBT optimization */}
       {isMobile ? (
         <>
@@ -81,7 +81,7 @@ const Hero = ({ theme }) => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1"
+          className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1 min-w-0"
         >
           <motion.span 
             initial={{ opacity: 0, scale: 0.8 }}
@@ -91,7 +91,7 @@ const Hero = ({ theme }) => {
           >
             Digital Craftsman
           </motion.span>
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-black tracking-tight leading-[0.8] mb-12">
+          <h1 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-black tracking-tight leading-[0.85] mb-12">
             Harshit <br />
             <span className="text-gradient">Pandya</span>
           </h1>

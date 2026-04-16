@@ -156,7 +156,7 @@ const App = () => {
       </AnimatePresence>
 
       <div 
-        className={`min-h-screen selection:bg-primary selection:text-white relative overflow-x-hidden bg-dark text-white transition-colors duration-1000 ease-in-out`}
+        className={`min-h-screen selection:bg-primary selection:text-white relative bg-dark text-white transition-colors duration-1000 ease-in-out`}
       >
 
         <React.Suspense fallback={null}>

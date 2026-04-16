@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import hpLogo from '../assets/hp-logo-new.jpeg';
+
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,29 +30,39 @@ const Navbar = ({ theme, toggleTheme }) => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 border-0 ${
       isScrolled 
-        ? 'bg-[#030014]/90 backdrop-blur-xl py-4' 
+        ? theme === 'light'
+          ? 'bg-slate-100/90 backdrop-blur-xl py-4 shadow-sm border-b border-black/5'
+          : 'bg-[#030014]/90 backdrop-blur-xl py-4'
         : 'bg-transparent py-4'
     } px-6 md:px-12`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <motion.a 
-          href="#" 
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center group relative"
+        <motion.a
+          href="#"
+          whileTap={{ scale: 0.97 }}
+          className="flex items-center gap-3.5 group relative"
           aria-label="Harshit Pandya Portfolio Home"
         >
-          <div className="relative">
-            <motion.div 
-              animate={{ rotate: 360 }} 
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }} 
-              className="absolute -inset-2.5 rounded-2xl border border-dashed border-primary/30 opacity-40 group-hover:opacity-100 group-hover:border-primary/60 transition-all duration-700 will-change-transform"
-            ></motion.div>
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary/40 to-secondary/40 rotate-12 absolute -inset-1 blur-xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
-            <div className="relative w-11 h-11 rounded-xl bg-dark border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="text-xl font-black text-primary italic tracking-tighter drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]">HP</span>
+          {/* Logo box */}
+          <div className="relative shrink-0">
+            {/* Spinning border ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+              className="absolute -inset-2 rounded-2xl border border-dashed border-primary/30 opacity-50 group-hover:opacity-100 group-hover:border-primary/70 transition-all duration-500 will-change-transform"
+            />
+            {/* Glow blob */}
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary/50 to-secondary/50 rotate-12 absolute -inset-1 blur-xl opacity-0 group-hover:opacity-80 transition-all duration-700" />
+            {/* Logo container */}
+            <div className="relative w-14 h-14 rounded-2xl bg-[#030014] border border-white/10 group-hover:border-primary/40 flex items-center justify-center overflow-hidden shadow-2xl transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <img
+                src={hpLogo}
+                alt="Harshit Pandya Monogram"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
             </div>
           </div>
+
         </motion.a>
         
         {/* Desktop Menu */}
@@ -94,7 +106,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           <motion.button 
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="text-white/80 hover:text-white transition-colors p-2"
+            className={`transition-colors p-2 ${theme === 'light' ? 'text-dark/70 hover:text-dark' : 'text-white/80 hover:text-white'}`}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
           >
@@ -111,7 +123,9 @@ const Navbar = ({ theme, toggleTheme }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="md:hidden fixed inset-0 top-0 left-0 w-full h-screen bg-dark/98 backdrop-blur-2xl z-[150] flex flex-col items-center justify-center space-y-8"
+            className={`md:hidden fixed inset-0 top-0 left-0 w-full h-screen backdrop-blur-2xl z-[150] flex flex-col items-center justify-center space-y-8 ${
+              theme === 'light' ? 'bg-slate-100/98' : 'bg-dark/98'
+            }`}
           >
             <button 
               onClick={() => setIsMenuOpen(false)}
