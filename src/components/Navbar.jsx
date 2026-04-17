@@ -42,8 +42,8 @@ const Navbar = ({ theme, toggleTheme }) => {
           ? 'bg-slate-100/90 backdrop-blur-xl py-4 shadow-sm border-b border-black/5'
           : 'bg-[#030014]/90 backdrop-blur-xl py-4'
         : 'bg-transparent py-4'
-    } px-6 md:px-12`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
+    } px-4 md:px-6`}>
+      <div className="container mx-auto px-0 flex justify-between items-center">
         <motion.a
           href="#"
           whileTap={{ scale: 0.97 }}
@@ -58,10 +58,10 @@ const Navbar = ({ theme, toggleTheme }) => {
               transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
               className="absolute -inset-2 rounded-2xl border border-dashed border-primary/30 opacity-50 group-hover:opacity-100 group-hover:border-primary/70 transition-all duration-500 will-change-transform"
             />
-            {/* Glow blob */}
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary/50 to-secondary/50 rotate-12 absolute -inset-1 blur-xl opacity-0 group-hover:opacity-80 transition-all duration-700" />
+             {/* Glow blob */}
+            <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-primary/50 to-secondary/50 rotate-12 absolute -inset-1 blur-xl opacity-0 group-hover:opacity-80 transition-all duration-700" />
             {/* Logo container */}
-            <div className="relative w-14 h-14 rounded-2xl bg-[#030014] border border-white/10 group-hover:border-primary/40 flex items-center justify-center overflow-hidden shadow-2xl transition-all duration-500">
+            <div className="relative w-13 h-13 rounded-2xl bg-[#030014] border border-white/10 group-hover:border-primary/40 flex items-center justify-center overflow-hidden shadow-2xl transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src={hpLogo}

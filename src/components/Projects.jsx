@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FaGithub, FaYoutube } from 'react-icons/fa';
 import cersThumbnail from '../assets/cers-thumbnail.jpg';
@@ -7,8 +7,12 @@ import dorjeteaPreview from '../assets/dorjetea-preview.png';
 import railonePreview from '../assets/railone-preview.png';
 import daryaganjPreview from '../assets/daryaganj-preview.png';
 import adilquadriPreview from '../assets/adilquadri-preview.png';
+import hotelRoomsPreview from '../assets/hotel-rooms.png';
+import dashStackPreview from '../assets/dash-stack.png';
 
 const Projects = () => {
+  const [filter, setFilter] = useState('all');
+
   const uiCloneProjects = [
     {
       title: 'DorjeTeas Clone',
@@ -73,6 +77,27 @@ const Projects = () => {
     },
   ];
 
+  const figmaProjects = [
+    {
+      title: 'Hotel Rooms',
+      category: 'UI/UX Design',
+      details: 'A comprehensive UI/UX design for a luxury hotel booking platform. Features seamless room selection, premium booking workflows, and a minimalist aesthetic focused on user comfort and visual clarity.',
+      tags: ['Figma', 'UI/UX', 'Hospitality'],
+      github: null,
+      demo: 'https://embed.figma.com/design/xjq7KGPJ0JyxIjEW5uoaeN/Hotel-rooms?node-id=2-519&embed-host=share',
+      image: hotelRoomsPreview,
+    },
+    {
+      title: 'Dash Stack & Netflix',
+      category: 'UI/UX Design',
+      details: 'Dual dashboard design exploring complex data visualization and content management. Includes a robust analytical dashboard (Dash Stack) and a high-fidelity recreation/extension of the Netflix UI.',
+      tags: ['Figma', 'Dashboard', 'Data Viz'],
+      github: null,
+      demo: 'https://embed.figma.com/design/KQeHoqq7vP5tcLsHfiyKdK/Untitled?node-id=0-1&embed-host=share',
+      image: dashStackPreview,
+    },
+  ];
+
   const ProjectCard = ({ project, idx }) => (
     <motion.div
       key={project.title}
@@ -95,37 +120,54 @@ const Projects = () => {
         />
         {/* Overlay buttons */}
         <div className="absolute inset-0 flex items-center justify-center gap-3 flex-wrap px-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} on GitHub`}
-            className="flex items-center gap-2 bg-white text-black text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
-          >
-            <FaGithub size={14} />
-            GitHub
-          </a>
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} live demo`}
-            className="flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-2xl shadow-primary/20 lg:hover:-translate-y-1.5 transition-all duration-[600ms] ease-[0.19,1,0.22,1]"
-          >
-            Live Demo
-            <ArrowUpRight size={14} className="lg:group-hover:translate-x-0.5 lg:group-hover:-translate-y-0.5 transition-transform" />
-          </a>
-          {project.youtubeDemo && (
+          {project.category === 'UI/UX Design' ? (
             <a
-              href={project.youtubeDemo}
+              href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Watch ${project.title} YouTube demo`}
-              className="flex items-center gap-2 bg-[#FF0000] text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+              aria-label={`View ${project.title} preview`}
+              className="flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full shadow-2xl shadow-primary/20 lg:hover:-translate-y-1.5 transition-all duration-[600ms] ease-[0.19,1,0.22,1]"
             >
-              <FaYoutube size={14} />
-              Demo
+              View Preview
+              <ArrowUpRight size={14} className="lg:group-hover:translate-x-0.5 lg:group-hover:-translate-y-0.5 transition-transform" />
             </a>
+          ) : (
+            <>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${project.title} on GitHub`}
+                  className="flex items-center gap-2 bg-white text-black text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+                >
+                  <FaGithub size={14} />
+                  GitHub
+                </a>
+              )}
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.title} live demo`}
+                className="flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-2xl shadow-primary/20 lg:hover:-translate-y-1.5 transition-all duration-[600ms] ease-[0.19,1,0.22,1]"
+              >
+                Live Demo
+                <ArrowUpRight size={14} className="lg:group-hover:translate-x-0.5 lg:group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              {project.youtubeDemo && (
+                <a
+                  href={project.youtubeDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Watch ${project.title} YouTube demo`}
+                  className="flex items-center gap-2 bg-[#FF0000] text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+                >
+                  <FaYoutube size={14} />
+                  Demo
+                </a>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -196,20 +238,95 @@ const Projects = () => {
           </motion.h2>
         </div>
 
-        {/* UI/UX Clone Projects */}
-        <SectionDivider label="UI / UX Clones" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
-          {uiCloneProjects.map((project, idx) => (
-            <ProjectCard key={project.title} project={project} idx={idx} />
+        {/* Filter Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap gap-4 mb-20 justify-start"
+        >
+          {[
+            { id: 'all', label: 'All Works' },
+            { id: 'ui-ux', label: 'UI/UX Clones' },
+            { id: 'full-stack', label: 'Full Stack' },
+            { id: 'figma', label: 'Figma Designs' }
+          ].map((cat) => (
+            <motion.button
+              key={cat.id}
+              onClick={() => setFilter(cat.id)}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-500 border ${
+                filter === cat.id
+                  ? 'bg-secondary text-white border-secondary shadow-[0_0_20px_rgba(215,190,255,0.2)]'
+                  : 'bg-white/[0.03] text-white/40 border-white/5 hover:bg-white/[0.08] hover:text-white/80 hover:border-white/10'
+              }`}
+            >
+              {cat.label}
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Full Stack Web Apps */}
-        <SectionDivider label="Full Stack Web Apps" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {fullStackProjects.map((project, idx) => (
-            <ProjectCard key={project.title} project={project} idx={idx} />
-          ))}
+        {/* Project Sections */}
+        <div className="space-y-12">
+          <AnimatePresence mode="wait">
+            {/* UI/UX Clone Projects */}
+            {(filter === 'all' || filter === 'ui-ux') && (
+              <motion.div
+                key="ui-ux-section"
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+              >
+                <SectionDivider label="UI / UX Clones" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                  {uiCloneProjects.map((project, idx) => (
+                    <ProjectCard key={project.title} project={project} idx={idx} />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Full Stack Web Apps */}
+            {(filter === 'all' || filter === 'full-stack') && (
+              <motion.div
+                key="full-stack-section"
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+              >
+                <SectionDivider label="Full Stack Web Apps" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {fullStackProjects.map((project, idx) => (
+                    <ProjectCard key={project.title} project={project} idx={idx} />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Figma Designs */}
+            {(filter === 'all' || filter === 'figma') && (
+              <motion.div
+                key="figma-section"
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+              >
+                <SectionDivider label="Figma Designs" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {figmaProjects.map((project, idx) => (
+                    <ProjectCard key={project.title} project={project} idx={idx} />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
       </div>

@@ -5,15 +5,21 @@ import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 const harshitPhoto = "/harshit.jpg";
 const resumePdf = "/Harshit_Pandya_Resume.pdf";
 
-const Hero = ({ theme }) => {
+const Hero = ({ theme, isVisible }) => {
   const heroProfile = harshitPhoto;
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden py-32">
       {/* Background Animated Blobs - Optimized with CSS for lower TBT */}
-      <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDuration: '10s' }} />
-      <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDuration: '15s', animationDelay: '2s' }} />
+      <div 
+        className="absolute top-1/4 -left-20 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary/10 rounded-full blur-[80px] md:blur-[120px] animate-pulse-slow will-change-[opacity,transform]" 
+        style={{ animationDuration: '10s', display: isVisible ? 'block' : 'none' }} 
+      />
+      <div 
+        className="absolute bottom-1/4 -right-20 w-[350px] md:w-[700px] h-[350px] md:h-[700px] bg-secondary/10 rounded-full blur-[80px] md:blur-[120px] animate-pulse-slow will-change-[opacity,transform]" 
+        style={{ animationDuration: '15s', animationDelay: '2s', display: isVisible ? 'block' : 'none' }} 
+      />
 
       {/* Modern Center Glow for Legibility - Theme Aware */}
       <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,transparent_100%)] ${theme === 'light' ? 'opacity-5' : 'opacity-40'} pointer-events-none transition-opacity duration-1000`}></div>
@@ -23,7 +29,7 @@ const Hero = ({ theme }) => {
         {/* Identity/Photo Content - Shows first on mobile, right on desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          animate={isVisible ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
           className="w-full md:w-2/5 flex flex-col items-center justify-center order-1 md:order-2"
         >
@@ -64,13 +70,13 @@ const Hero = ({ theme }) => {
         {/* Text Content - Shows second on mobile, left on desktop */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
           transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
           className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1 min-w-0"
         >
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
             className="px-6 py-2 rounded-full glass border border-white/5 text-[9px] font-black tracking-[0.5em] text-primary uppercase inline-block mb-10 shadow-lg"
           >
@@ -83,7 +89,7 @@ const Hero = ({ theme }) => {
           
           <motion.div
              initial={{ opacity: 0, y: 15 }}
-             animate={{ opacity: 1, y: 0 }}
+             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
              transition={{ duration: 1, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
              className="flex flex-col mb-16 items-center md:items-start"
           >
@@ -94,7 +100,7 @@ const Hero = ({ theme }) => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 1.2, delay: 0.8, ease: [0.19, 1, 0.22, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-5"
           >

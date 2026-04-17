@@ -35,7 +35,7 @@ const App = () => {
 
   useEffect(() => {
     // Optimized preloader time for better UX and LCP
-    const timer = setTimeout(() => setShowWelcome(false), 1200);
+    const timer = setTimeout(() => setShowWelcome(false), 1600);
     
     // Efficient scroll handling
     let ticking = false;
@@ -69,7 +69,7 @@ const App = () => {
               opacity: 0, 
               scale: 1.05,
               filter: "blur(20px)",
-              transition: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }
+              transition: { duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }
             }}
             className="fixed inset-0 z-[99999] bg-[#030014] flex items-center justify-center flex-col overflow-hidden pointer-events-none"
           >
@@ -142,7 +142,7 @@ const App = () => {
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         
         <main className="relative z-10">
-          <Hero theme={theme} />
+          <Hero theme={theme} isVisible={!showWelcome} />
           
           <LazySection><Suspense fallback={null}><About /></Suspense></LazySection>
           <LazySection><Suspense fallback={null}><Skills /></Suspense></LazySection>
