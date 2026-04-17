@@ -11,26 +11,9 @@ const Hero = ({ theme }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden py-32">
-      {/* Background Animated Blobs - Static on mobile for TBT optimization */}
-      {isMobile ? (
-        <>
-          <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-secondary/10 rounded-full blur-[120px]" />
-        </>
-      ) : (
-        <>
-          <motion.div 
-            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"
-          />
-          <motion.div 
-            animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[120px]"
-          />
-        </>
-      )}
+      {/* Background Animated Blobs - Optimized with CSS for lower TBT */}
+      <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDuration: '10s' }} />
+      <div className="absolute bottom-1/4 -right-20 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDuration: '15s', animationDelay: '2s' }} />
 
       {/* Modern Center Glow for Legibility - Theme Aware */}
       <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,transparent_100%)] ${theme === 'light' ? 'opacity-5' : 'opacity-40'} pointer-events-none transition-opacity duration-1000`}></div>
