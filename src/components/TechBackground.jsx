@@ -11,34 +11,35 @@ const TechBackground = ({ theme }) => {
   }, []);
 
   const technologies = [
-    'React', 'Node.js', 'Python', 'FastAPI', 'JavaScript', 'Tailwind', 'MongoDB', 'PostgreSQL'
+    'React', 'Node.js', 'Python', 'JavaScript', 'Tailwind', 'MongoDB'
   ];
 
   const configs = React.useMemo(() => {
-    const circleCount = isMobile ? 2 : 4;
-    const dotCount = isMobile ? 4 : 8;
-    const techCount = isMobile ? 4 : 8;
+    // Drastically reduced counts for massive TBT improvement
+    const circleCount = isMobile ? 1 : 2; 
+    const dotCount = isMobile ? 2 : 4;
+    const techCount = isMobile ? 2 : 4;
 
     return {
       circles: Array.from({ length: circleCount }).map((_, i) => ({
-        size: isMobile ? 150 + i * 50 : 200 + i * 100,
-        dur: 20 + i * 5,
-        left: (i * 35) % 100,
-        top: (i * 25) % 100,
-        delay: i * -2,
+        size: isMobile ? 150 : 250 + i * 150,
+        dur: 25 + i * 10,
+        left: (i * 45 + 10) % 100,
+        top: (i * 35 + 15) % 100,
+        delay: i * -5,
       })),
       dots: Array.from({ length: dotCount }).map((_, i) => ({
-        dur: 6 + i * 2,
-        left: (i * 15) % 100,
-        top: (i * 12) % 100,
-        delay: i * -1,
+        dur: 8 + i * 3,
+        left: (i * 25 + 5) % 100,
+        top: (i * 20 + 10) % 100,
+        delay: i * -2,
       })),
       techs: technologies.slice(0, techCount).map((name, i) => ({
         name,
-        left: (i * 20) % 90,
-        top: (i * 15 + 10) % 90,
-        dur: 30 + i * 10,
-        delay: i * -5,
+        left: (i * 25 + 10) % 90,
+        top: (i * 25 + 20) % 90,
+        dur: 40 + i * 15,
+        delay: i * -8,
       }))
     };
   }, [isMobile]);
@@ -48,14 +49,14 @@ const TechBackground = ({ theme }) => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none bg-dark transition-colors duration-1000"
     >
       {/* Radial Baseline */}
-      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.02] to-secondary/[0.02]' : 'from-primary/[0.05] via-transparent to-secondary/[0.05]'}`} />
+      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.01] to-secondary/[0.01]' : 'from-primary/[0.03] via-transparent to-secondary/[0.03]'}`} />
 
-      {/* Floating Rings */}
+      {/* Floating Rings - Optimized with will-change and hardware acceleration */}
       {configs.circles.map((config, i) => (
         <div
           key={`circle-${i}`}
           aria-hidden="true"
-          className="absolute rounded-full animate-float-bg will-change-transform opacity-15"
+          className="absolute rounded-full animate-float-bg will-change-transform opacity-[0.03] pointer-events-none"
           style={{
             width: config.size,
             height: config.size,
@@ -63,7 +64,8 @@ const TechBackground = ({ theme }) => {
             top: `${config.top}%`,
             animationDuration: `${config.dur}s`,
             animationDelay: `${config.delay}s`,
-            background: `radial-gradient(circle, rgba(20,184,166,${theme === 'light' ? '0.03' : '0.1'}) 0%, rgba(0,0,0,0) 70%)`
+            background: `radial-gradient(circle, rgba(20,184,166,${theme === 'light' ? '0.02' : '0.05'}) 0%, rgba(0,0,0,0) 70%)`,
+            transform: 'translate3d(0,0,0)'
           }}
         />
       ))}
@@ -73,12 +75,13 @@ const TechBackground = ({ theme }) => {
         <div
           key={`tech-${idx}`}
           aria-hidden="true"
-          className={`absolute font-black text-[10px] md:text-[12px] tracking-[0.6em] uppercase whitespace-nowrap animate-float-bg-slow will-change-transform ${theme === 'light' ? 'text-primary/10' : 'text-primary/20'}`}
+          className={`absolute font-black text-[9px] md:text-[11px] tracking-[0.5em] uppercase whitespace-nowrap animate-float-bg-slow will-change-transform pointer-events-none ${theme === 'light' ? 'text-primary/[0.05]' : 'text-primary/[0.08]'}`}
           style={{
             left: `${tech.left}%`,
             top: `${tech.top}%`,
             animationDuration: `${tech.dur}s`,
-            animationDelay: `${tech.delay}s`
+            animationDelay: `${tech.delay}s`,
+            transform: 'translate3d(0,0,0)'
           }}
         >
           {tech.name}
@@ -90,12 +93,13 @@ const TechBackground = ({ theme }) => {
         <div
           key={`dot-${i}`}
           aria-hidden="true"
-          className="absolute w-1.5 h-1.5 bg-primary/40 rounded-full blur-[1px] animate-pulse-slow will-change-transform"
+          className="absolute w-1 h-1 bg-primary/20 rounded-full blur-[1px] animate-pulse-slow will-change-transform pointer-events-none"
           style={{
             left: `${dot.left}%`,
             top: `${dot.top}%`,
             animationDuration: `${dot.dur}s`,
-            animationDelay: `${dot.delay}s`
+            animationDelay: `${dot.delay}s`,
+            transform: 'translate3d(0,0,0)'
           }}
         />
       ))}
@@ -103,4 +107,5 @@ const TechBackground = ({ theme }) => {
   );
 };
 
-export default TechBackground;
+export default React.memo(TechBackground);
+

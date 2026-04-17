@@ -38,10 +38,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Hide welcome screen after 2.0 seconds (optimized for aesthetic experience)
+    // Hide welcome screen after 1.2 seconds (optimized for aesthetic experience & LCP)
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, 2000);
+    }, 1200);
 
     // Track scroll for "Move to Top" button, optimized with ticking
     let ticking = false;

@@ -49,14 +49,16 @@ const Hero = ({ theme }) => {
              <div className="absolute inset-0 rounded-full border border-primary/20 animate-[spin_20s_linear_infinite] will-change-transform"></div>
              <div className="absolute inset-4 md:inset-6 rounded-full border border-secondary/10 animate-[spin_30s_linear_infinite_reverse] will-change-transform"></div>
              
-             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/5 overflow-hidden shadow-2xl lg:group-hover:scale-[1.05] transition-all duration-[1200ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform bg-white/5">
+             <div className="absolute inset-0 m-auto w-48 h-48 md:w-[400px] md:h-[400px] rounded-full glass border border-white/5 overflow-hidden shadow-2xl transition-all duration-[1000ms] ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform bg-white/5">
                <img 
                  src={heroProfile} 
                  alt="Harshit Pandya Headshot" 
                  width={400}
                  height={400}
                  loading="eager"
-                 className="w-full h-full object-cover transition-all duration-[1200ms] brightness-90 lg:group-hover:brightness-110 lg:group-hover:scale-110 ease-[cubic-bezier(0.19,1,0.22,1)]" 
+                 fetchpriority="high"
+                 decoding="async"
+                 className="w-full h-full object-cover brightness-95 lg:group-hover:brightness-110 lg:group-hover:scale-105 transition-all duration-700 ease-out" 
                />
              </div>
              

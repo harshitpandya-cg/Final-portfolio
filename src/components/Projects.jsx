@@ -88,9 +88,10 @@ const Projects = () => {
           src={project.image}
           alt={project.title}
           loading="lazy"
+          decoding="async"
           width={600}
           height={375}
-          className="w-full h-full object-cover brightness-75 lg:group-hover:brightness-50 lg:group-hover:scale-105 transition-all duration-700 ease-out"
+          className="w-full h-full object-cover brightness-[0.85] lg:group-hover:brightness-50 lg:group-hover:scale-105 transition-all duration-700 ease-out"
         />
         {/* Overlay buttons */}
         <div className="absolute inset-0 flex items-center justify-center gap-3 flex-wrap px-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400">
