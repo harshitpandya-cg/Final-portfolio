@@ -24,6 +24,13 @@ const Contact = () => {
       {
         from_name: formData.name,
         from_email: formData.email,
+        name: formData.name, 
+        email: formData.email,
+        user_name: formData.name, // Common EmailJS variable
+        user_email: formData.email, // Common EmailJS variable
+        Name: formData.name, // Capitalized version
+        Email: formData.email, // Capitalized version
+        reply_to: formData.email,
         subject: formData.subject,
         message: formData.message,
       },

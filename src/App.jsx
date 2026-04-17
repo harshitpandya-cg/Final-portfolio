@@ -39,26 +39,29 @@ const App = () => {
 
   useEffect(() => {
     // Hide welcome screen after 1.2 seconds (optimized for aesthetic experience & LCP)
-    const timer = setTimeout(() => {
+    const welcomeTimer = setTimeout(() => {
       setShowWelcome(false);
     }, 1200);
 
-    // Track scroll for "Move to Top" button, optimized with ticking
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setShowScrollTop(window.scrollY > 400);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    // Delay theme and scroll listener slightly to improve TBT
+    const interactionTimer = setTimeout(() => {
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            setShowScrollTop(window.scrollY > 400);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, 100);
+
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(welcomeTimer);
     };
   }, []);
 
@@ -79,66 +82,48 @@ const App = () => {
             }}
             className="fixed inset-0 z-[99999] bg-dark flex items-center justify-center flex-col overflow-hidden"
           >
-            {/* Animated background patterns for welcome screen */}
-            <div className="absolute inset-0 opacity-30">
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.15, 1],
-                  rotate: [0, 45, 0],
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-1/2 -left-1/2 w-full h-full bg-[radial-gradient(circle,rgba(20,184,166,0.2)_0%,transparent_70%)]"
-              />
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  rotate: [0, -45, 0],
-                }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[radial-gradient(circle,rgba(99,102,241,0.2)_0%,transparent_70%)]"
-              />
+            {/* Reduced complexity background for lower TBT */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute -top-1/4 -left-1/4 w-full h-full bg-[radial-gradient(circle,rgba(20,184,166,0.15)_0%,transparent_60%)]" />
+              <div className="absolute -bottom-1/4 -right-1/4 w-full h-full bg-[radial-gradient(circle,rgba(99,102,241,0.15)_0%,transparent_60%)]" />
             </div>
 
             <motion.div
               className="text-center relative z-10"
             >
               <motion.div 
-                initial={{ y: 10, opacity: 0 }}
+                initial={{ y: 5, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="text-sm md:text-lg text-primary/80 font-black uppercase tracking-[0.6em] mb-10"
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-xs md:text-sm text-primary/80 font-black uppercase tracking-[0.5em] mb-8"
               >
-                Transforming Ideas Into Digital Experiences
+                Crafting Digital Excellence
               </motion.div>
               
               <div className="relative inline-block px-4">
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 1.8, ease: [0.65, 0, 0.35, 1], delay: 0.5 }}
+                  transition={{ duration: 1.5, ease: [0.65, 0, 0.35, 1], delay: 0.3 }}
                   className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent z-20 origin-center"
                 />
-                <div className="text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] font-black text-white uppercase tracking-tighter leading-none mb-6 flex items-center justify-center">
+                <div className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-black text-white uppercase tracking-tighter leading-none mb-6 flex items-center justify-center">
                   <motion.div
-                    initial={{ y: 20, opacity: 0 }}
+                    initial={{ y: 15, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
                     className="flex"
                   >
-                    {["H", "a", "r", "s", "h", "i", "t"].map((char, i) => (
-                      <span key={i} className="inline-block hover:text-primary transition-all duration-500 cursor-default">{char}</span>
-                    ))}
+                    Harshit
                   </motion.div>
-                  <span className="inline-block w-6 md:w-12"></span>
+                  <span className="inline-block w-4 md:w-8"></span>
                   <motion.div
-                    initial={{ y: 20, opacity: 0 }}
+                    initial={{ y: 15, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
+                    transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
                     className="flex text-gradient"
                   >
-                    {["P", "a", "n", "d", "y", "a"].map((char, i) => (
-                      <span key={i} className="inline-block hover:scale-105 transition-all duration-500 cursor-default">{char}</span>
-                    ))}
+                    Pandya
                   </motion.div>
                 </div>
               </div>
@@ -146,10 +131,10 @@ const App = () => {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.2, duration: 1.2 }}
-                className="text-white/20 font-mono text-[10px] tracking-[0.5em] mt-12 uppercase italic"
+                transition={{ delay: 1.5, duration: 1 }}
+                className="text-white/20 font-mono text-[9px] tracking-[0.4em] mt-10 uppercase italic"
               >
-                Refining digital experience...
+                Optimizing Core Vitals...
               </motion.p>
             </motion.div>
           </motion.div>
@@ -157,7 +142,7 @@ const App = () => {
       </AnimatePresence>
 
       <div 
-        className={`min-h-screen selection:bg-primary selection:text-white relative bg-dark text-white transition-colors duration-1000 ease-in-out`}
+        className={`min-h-screen selection:bg-primary selection:text-white relative bg-[#030014] text-white transition-opacity duration-500`}
       >
 
         <React.Suspense fallback={null}>
