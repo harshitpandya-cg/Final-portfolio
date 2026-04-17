@@ -10,6 +10,7 @@ const Services = React.lazy(() => import('./components/Services'));
 const Education = React.lazy(() => import('./components/Education'));
 const Certificates = React.lazy(() => import('./components/Certificates'));
 const HackathonJourney = React.lazy(() => import('./components/HackathonJourney'));
+const Achievements = React.lazy(() => import('./components/Achievements'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
 const TechBackground = React.lazy(() => import('./components/TechBackground'));
@@ -174,6 +175,7 @@ const App = () => {
             <Projects />
             <Certificates />
             <HackathonJourney />
+            <Achievements />
             <Services />
             <Education />
             <Contact />

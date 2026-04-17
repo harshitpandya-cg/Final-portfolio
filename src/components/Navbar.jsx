@@ -23,6 +23,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
     { name: 'Hackathon', href: '#hackathon' },
+    { name: 'Achievements', href: '#achievements' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];

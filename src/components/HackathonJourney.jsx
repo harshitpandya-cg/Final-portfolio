@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Users, Zap, ChevronLeft, ChevronRight, Award, MapPin, Calendar } from 'lucide-react';
+import { Trophy, Users, Zap, ChevronLeft, ChevronRight, MapPin, Calendar } from 'lucide-react';
 import suHackathonImg from '../assets/su-hackathon-2026.jpg';
-import electrosphereImg from '../assets/electrosphere-2026.jpg';
+import hackTheSpringImg from '../assets/hackthespring.jpeg';
 
 const hackathons = [
   {
     id: 0,
     title: 'SU Hackathon 2026',
     subtitle: 'Sangam University — Bhilwara',
-    badge: 'Finalist',
+    badge: null,
     badgeColor: 'from-primary to-teal-400',
     glowColor: 'rgba(20,184,166,0.3)',
     borderColor: 'border-primary/30',
@@ -34,55 +34,55 @@ const hackathons = [
         text: 'Demonstrated strong problem-solving, teamwork, and development skills.',
       },
     ],
-    tags: ['University Level', 'Team Work', 'Problem Solving', 'Finalist'],
+    tags: ['University Level', 'Team Work', 'Problem Solving'],
   },
   {
     id: 1,
-    title: 'ElectroSphere 2026',
-    subtitle: 'Swaminarayan University',
-    badge: '2nd Place 🥈',
-    badgeColor: 'from-secondary to-indigo-400',
-    glowColor: 'rgba(99,102,241,0.3)',
-    borderColor: 'border-secondary/30',
-    accentColor: 'text-secondary',
-    bgAccent: 'bg-secondary/10',
-    icon: <Award className="text-secondary" size={22} />,
-    date: 'January 2026',
-    location: 'Gujarat, India',
-    image: electrosphereImg,
-    tagline: 'Secured 2nd Position in a competitive IoT-based Technical Hackathon',
+    title: 'Hack The Spring',
+    subtitle: 'GEC Gandhinagar — Petpooja',
+    badge: null,
+    badgeColor: 'from-primary to-teal-400',
+    glowColor: 'rgba(20,184,166,0.3)',
+    borderColor: 'border-primary/30',
+    accentColor: 'text-primary',
+    bgAccent: 'bg-primary/10',
+    icon: <Zap className="text-primary" size={22} />,
+    date: 'Feb 2026',
+    location: 'GEC Gandhinagar',
+    image: hackTheSpringImg,
+    tagline: 'Innovating POS solutions for restaurant management in a 36-hour sprint.',
     highlights: [
       {
-        icon: <Trophy size={16} />,
-        text: 'Secured 2nd position in a competitive technical hackathon.',
+        icon: <Zap size={16} />,
+        text: 'Completed 3 intense rounds in a 36-hour hackathon organized by Petpooja.',
       },
       {
-        icon: <Zap size={16} />,
-        text: 'Demonstrated strong problem-solving and technical skills under pressure.',
+        icon: <Trophy size={16} />,
+        text: 'Designed and developed a robust POS system tailored for the restaurant domain.',
       },
       {
         icon: <Users size={16} />,
-        text: 'Collaborated effectively to deliver a high-quality solution.',
+        text: 'Engineered a real-world restaurant automation solution under high-pressure rounds.',
       },
     ],
-    tags: ['IoT Based', '2nd Position', 'Technical Excellence', 'Innovation'],
+    tags: ['Restaurant POS', '3 Rounds Challenge', 'Web Development'],
   },
 ];
 
 const textVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: i * 0.1, duration: 0.8, ease: [0.19, 1, 0.22, 1] },
   }),
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.4, ease: [0.19, 1, 0.22, 1] } },
 };
 
 const imageVariants = {
-  enter: (dir) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0, scale: 1.05 }),
-  center: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-  exit: (dir) => ({ x: dir < 0 ? '100%' : '-100%', opacity: 0, scale: 0.97, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }),
+  enter: (dir) => ({ x: dir > 0 ? '10%' : '-10%', opacity: 0, scale: 1.1 }),
+  center: { x: 0, opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.19, 1, 0.22, 1] } },
+  exit: (dir) => ({ x: dir < 0 ? '10%' : '-10%', opacity: 0, scale: 0.95, transition: { duration: 0.8, ease: [0.19, 1, 0.22, 1] } }),
 };
 
 const HackathonJourney = () => {
@@ -181,18 +181,20 @@ const HackathonJourney = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent pointer-events-none" />
 
             {/* Badge */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`badge-${hack.id}`}
-                initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                transition={{ duration: 0.4 }}
-                className={`absolute top-6 left-6 bg-gradient-to-r ${hack.badgeColor} text-dark font-black text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-lg`}
-              >
-                {hack.badge}
-              </motion.div>
-            </AnimatePresence>
+            {hack.badge && (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`badge-${hack.id}`}
+                  initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className={`absolute top-6 left-6 bg-gradient-to-r ${hack.badgeColor} text-dark font-black text-xs uppercase tracking-widest px-5 py-2 rounded-full shadow-lg`}
+                >
+                  {hack.badge}
+                </motion.div>
+              </AnimatePresence>
+            )}
 
             {/* Bottom meta — only on desktop where it doesn't clash with dots */}
             <div className="absolute bottom-16 left-6 right-6 hidden sm:flex items-center justify-between">

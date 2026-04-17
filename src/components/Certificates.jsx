@@ -13,10 +13,10 @@ const Certificates = () => {
   const certificates = [
     {
       title: 'Hack the Spring',
-      organization: 'GEC Gandhinagar',
-      date: '2025',
+      organization: 'GEC Gandhinagar x Petpooja',
+      date: '2026',
       location: 'Gandhinagar, Gujarat',
-      description: 'Participated in the offline hackathon "Hack the Spring", gaining valuable experience in collaborative problem-solving and rapid development.',
+      description: 'Participated in a 36-hour intensive hackathon "Hack the Spring". Developed a robust restaurant POS system across 3 competitive rounds.',
       icon: <Award className="text-primary" size={24} />,
       image: hackTheSpringCert
     },

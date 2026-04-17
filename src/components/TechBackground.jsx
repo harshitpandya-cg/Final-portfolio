@@ -48,14 +48,14 @@ const TechBackground = ({ theme }) => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none bg-dark transition-colors duration-1000"
     >
       {/* Radial Baseline */}
-      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.03] to-secondary/[0.03]' : 'from-primary/[0.08] via-transparent to-secondary/[0.08]'}`} />
+      <div className={`absolute inset-0 bg-gradient-to-tr ${theme === 'light' ? 'from-primary/[0.02] to-secondary/[0.02]' : 'from-primary/[0.05] via-transparent to-secondary/[0.05]'}`} />
 
       {/* Floating Rings */}
       {configs.circles.map((config, i) => (
         <div
           key={`circle-${i}`}
           aria-hidden="true"
-          className="absolute rounded-full animate-float-bg will-change-transform opacity-10"
+          className="absolute rounded-full animate-float-bg will-change-transform opacity-15"
           style={{
             width: config.size,
             height: config.size,
@@ -63,7 +63,7 @@ const TechBackground = ({ theme }) => {
             top: `${config.top}%`,
             animationDuration: `${config.dur}s`,
             animationDelay: `${config.delay}s`,
-            background: `radial-gradient(circle, rgba(20,184,166,${theme === 'light' ? '0.05' : '0.15'}) 0%, rgba(0,0,0,0) 70%)`
+            background: `radial-gradient(circle, rgba(20,184,166,${theme === 'light' ? '0.03' : '0.1'}) 0%, rgba(0,0,0,0) 70%)`
           }}
         />
       ))}

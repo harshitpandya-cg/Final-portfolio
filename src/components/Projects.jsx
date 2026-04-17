@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaYoutube } from 'react-icons/fa';
 import cersThumbnail from '../assets/cers-thumbnail.jpg';
 import dorjeteaPreview from '../assets/dorjetea-preview.png';
 import railonePreview from '../assets/railone-preview.png';
@@ -17,6 +17,7 @@ const Projects = () => {
       tags: ['HTML', 'CSS', 'Refined UI'],
       github: 'https://github.com/harshitpandya-cg/dorjetea',
       demo: 'https://dorjeteasbyharshit108660.netlify.app/',
+      youtubeDemo: 'https://www.youtube.com/watch?v=Ztq7djCQkl0',
       image: dorjeteaPreview,
     },
     {
@@ -26,6 +27,7 @@ const Projects = () => {
       tags: ['HTML', 'CSS', 'Responsive'],
       github: 'https://github.com/harshitpandya-cg/railone-clone',
       demo: 'https://railoneharshit108660.netlify.app/',
+      youtubeDemo: 'https://www.youtube.com/watch?v=DWPFaA7PpnI',
       image: railonePreview,
     },
     {
@@ -35,6 +37,7 @@ const Projects = () => {
       tags: ['HTML', 'CSS', 'Brand UI'],
       github: 'https://github.com/harshitpandya-cg/daryaganj-clone',
       demo: 'https://daryaganjharshit108660.netlify.app/',
+      youtubeDemo: 'https://www.youtube.com/watch?v=Ut6qzL7NYV8',
       image: daryaganjPreview,
     },
     {
@@ -44,6 +47,7 @@ const Projects = () => {
       tags: ['HTML', 'CSS', 'Grid Layout'],
       github: 'https://github.com/harshitpandya-cg/adilquadri-clone',
       demo: 'https://adilquadribyharshit108660.netlify.app/',
+      youtubeDemo: 'https://www.youtube.com/watch?v=Hil8ejxCRkI',
       image: adilquadriPreview,
     },
   ];
@@ -75,8 +79,8 @@ const Projects = () => {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col rounded-3xl overflow-hidden border border-white/8 bg-white/[0.03] backdrop-blur-sm lg:hover:border-white/15 lg:hover:bg-white/[0.06] transition-all duration-500"
+      transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.19, 1, 0.22, 1] }}
+      className="group relative flex flex-col rounded-3xl overflow-hidden border border-white/8 bg-white/[0.03] backdrop-blur-sm lg:hover:border-primary/40 lg:hover:bg-white/[0.06] transition-all duration-[800ms] ease-[0.19,1,0.22,1]"
     >
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden m-3 rounded-2xl">
@@ -89,13 +93,13 @@ const Projects = () => {
           className="w-full h-full object-cover brightness-75 lg:group-hover:brightness-50 lg:group-hover:scale-105 transition-all duration-700 ease-out"
         />
         {/* Overlay buttons */}
-        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400">
+        <div className="absolute inset-0 flex items-center justify-center gap-3 flex-wrap px-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${project.title} on GitHub`}
-            className="flex items-center gap-2 bg-white text-black text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+            className="flex items-center gap-2 bg-white text-black text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
           >
             <FaGithub size={14} />
             GitHub
@@ -105,11 +109,23 @@ const Projects = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${project.title} live demo`}
-            className="flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+            className="flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-2xl shadow-primary/20 lg:hover:-translate-y-1.5 transition-all duration-[600ms] ease-[0.19,1,0.22,1]"
           >
             Live Demo
-            <ArrowUpRight size={14} />
+            <ArrowUpRight size={14} className="lg:group-hover:translate-x-0.5 lg:group-hover:-translate-y-0.5 transition-transform" />
           </a>
+          {project.youtubeDemo && (
+            <a
+              href={project.youtubeDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Watch ${project.title} YouTube demo`}
+              className="flex items-center gap-2 bg-[#FF0000] text-white text-xs font-bold uppercase tracking-widest px-4 py-2.5 rounded-full shadow-xl lg:hover:-translate-y-1 transition-transform duration-300"
+            >
+              <FaYoutube size={14} />
+              Demo
+            </a>
+          )}
         </div>
       </div>
 
