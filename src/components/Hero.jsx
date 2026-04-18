@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
 const harshitPhoto = "/harshit.jpg";
-const resumePdf = "/Harshit_Pandya_Resume.pdf";
+const resumePdf = "https://drive.google.com/file/d/1iOnGN3g0YFzFb_9AxSzG1M7FyRsrc-J8/view";
 
 const Hero = ({ theme, isVisible }) => {
   const heroProfile = harshitPhoto;
@@ -124,7 +124,8 @@ const Hero = ({ theme, isVisible }) => {
 
             <a 
               href={resumePdf} 
-              download="Harshit_Pandya_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto group px-10 py-5 rounded-2xl glass border border-white/5 font-black tracking-[0.2em] uppercase text-[10px] flex items-center justify-center lg:hover:bg-white/10 lg:hover:-translate-y-1.5 transition-all duration-[0.8s] ease-[cubic-bezier(0.19,1,0.22,1)]"
             >
                <Download size={14} className="mr-3 text-secondary lg:group-hover:scale-110 transition-transform duration-500" aria-hidden="true" />
