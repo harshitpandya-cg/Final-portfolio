@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import hpLogo from '../assets/hp-logo-new.jpeg';
+import hpLogo from '../assets/favicon.jpeg';
 
 
 const Navbar = ({ theme, toggleTheme }) => {
