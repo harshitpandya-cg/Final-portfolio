@@ -3,10 +3,42 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Users, Zap, ChevronLeft, ChevronRight, MapPin, Calendar } from 'lucide-react';
 import suHackathonImg from '../assets/su-hackathon-2026.jpg';
 import hackTheSpringImg from '../assets/hackthespring.jpeg';
+import iiitSuratImg from '../assets/iiit-surat-hackathon.png';
 
 const hackathons = [
   {
     id: 0,
+    title: 'IIIT Surat Hackathon',
+    subtitle: 'IIIT Surat (Indian Institute of Information Technology)',
+    badge: '7th Position',
+    badgeColor: 'from-emerald-400 to-cyan-500',
+    glowColor: 'rgba(52,211,153,0.3)',
+    borderColor: 'border-emerald-500/30',
+    accentColor: 'text-emerald-400',
+    bgAccent: 'bg-emerald-500/10',
+    icon: <Trophy className="text-emerald-400" size={22} />,
+    date: '2025',
+    location: 'IIIT Surat',
+    image: iiitSuratImg,
+    tagline: 'Ranked 7th among 30+ teams with a full project pitch presented to judges and students.',
+    highlights: [
+      {
+        icon: <Trophy size={16} />,
+        text: 'Secured 7th Rank overall among 30+ elite teams from various institutions.',
+      },
+      {
+        icon: <Users size={16} />,
+        text: 'Presented our full project pitch live in front of an audience of judges and fellow students.',
+      },
+      {
+        icon: <Zap size={16} />,
+        text: 'An incredible hands-on experience that sharpened my rapid prototyping and public speaking skills.',
+      },
+    ],
+    tags: ['IIIT Surat', '7th Rank', '30+ Teams', 'Good Experience'],
+  },
+  {
+    id: 1,
     title: 'SU Hackathon 2026',
     subtitle: 'Sangam University — Bhilwara',
     badge: null,
@@ -37,7 +69,7 @@ const hackathons = [
     tags: ['University Level', 'Team Work', 'Problem Solving'],
   },
   {
-    id: 1,
+    id: 2,
     title: 'Hack The Spring',
     subtitle: 'GEC Gandhinagar — Petpooja',
     badge: null,

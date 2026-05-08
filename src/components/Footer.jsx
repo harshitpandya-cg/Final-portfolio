@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 
 const Footer = () => {
   return (
@@ -34,6 +35,9 @@ const Footer = () => {
             </a>
             <a href="https://www.youtube.com/@harshitpandya2911" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-white/30 lg:hover:text-[#ff0000] transition-all duration-300 lg:hover:scale-125">
               <FaYoutube size={20} />
+            </a>
+            <a href="https://leetcode.com/u/harshit_pandya01/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="text-white/30 lg:hover:text-[#ffa116] transition-all duration-300 lg:hover:scale-125">
+               <SiLeetcode size={20} />
             </a>
           </div>
 

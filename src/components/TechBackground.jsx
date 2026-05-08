@@ -70,12 +70,26 @@ const TechBackground = ({ theme }) => {
         />
       ))}
 
-      {/* Floating Tech Names */}
+      {/* Shooting Stars - Subtle light animations */}
+      {!isMobile && Array.from({ length: 3 }).map((_, i) => (
+        <div
+          key={`star-${i}`}
+          className="absolute w-[2px] h-[100px] bg-gradient-to-t from-primary/40 to-transparent rotate-[-45deg] animate-shooting-star pointer-events-none"
+          style={{
+            top: `${10 + i * 25}%`,
+            right: `${10 + i * 20}%`,
+            animationDelay: `${i * 3}s`,
+            animationDuration: '8s'
+          }}
+        />
+      ))}
+
+      {/* Floating Tech Names - Enhanced with Tech Drift */}
       {configs.techs.map((tech, idx) => (
         <div
           key={`tech-${idx}`}
           aria-hidden="true"
-          className={`absolute font-black text-[9px] md:text-[11px] tracking-[0.5em] uppercase whitespace-nowrap animate-float-bg-slow will-change-transform pointer-events-none ${theme === 'light' ? 'text-primary/[0.05]' : 'text-primary/[0.08]'}`}
+          className={`absolute font-black text-[9px] md:text-[11px] tracking-[0.5em] uppercase whitespace-nowrap animate-tech-drift will-change-transform pointer-events-none ${theme === 'light' ? 'text-primary/[0.05]' : 'text-primary/[0.08]'}`}
           style={{
             left: `${tech.left}%`,
             top: `${tech.top}%`,

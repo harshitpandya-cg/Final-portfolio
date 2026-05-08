@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Cpu, Database, Layout, Terminal, Braces, Binary } from 'lucide-react';
+import { Code2, Cpu, Database, Layout, Terminal, Braces, Binary, Trophy, FolderGit2 } from 'lucide-react';
 
 const About = () => {
   return (
@@ -63,20 +63,22 @@ const About = () => {
               {/* Main Content: Tech Icons Grid */}
               <div className="grid grid-cols-2 gap-5 relative z-10 flex-grow content-center">
                 {[
-                  { icon: <Layout className="text-primary" size={28} />, label: "UI Design" },
-                  { icon: <Database className="text-secondary" size={28} />, label: "Architecture" },
-                  { icon: <Code2 className="text-accent" size={28} />, label: "Development" },
-                  { icon: <Terminal className="text-white" size={28} />, label: "Deployment" }
+                  { label: <><span className="text-white text-base md:text-lg drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">10+</span><br/>Projects</> },
+                  { label: <><span className="text-white text-base md:text-lg drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">4+</span><br/>Hackathons</> },
+                  { icon: <Layout className="text-accent" size={28} />, label: "UI/UX Design" },
+                  { icon: <Code2 className="text-white" size={28} />, label: "Full Stack" }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
                     whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' } : {}}
-                    className="flex flex-col items-center justify-center p-6 rounded-[32px] bg-white/[0.03] border border-white/5 transition-all duration-500 group/item"
+                    className="flex flex-col items-center justify-center p-4 sm:p-6 h-[110px] rounded-[32px] bg-white/[0.03] border border-white/5 transition-all duration-500 group/item"
                   >
-                    <div className="mb-4 lg:group-hover/item:scale-110 lg:group-hover/item:rotate-3 transition-all duration-500">
-                      {item.icon}
-                    </div>
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-white/40 lg:group-hover/item:text-white transition-colors">
+                    {item.icon && (
+                      <div className="mb-3 lg:group-hover/item:scale-110 lg:group-hover/item:rotate-3 transition-all duration-500">
+                        {item.icon}
+                      </div>
+                    )}
+                    <span className="text-xs md:text-[13px] font-black uppercase tracking-[0.2em] text-white/60 lg:group-hover/item:text-white transition-colors text-center leading-relaxed">
                       {item.label}
                     </span>
                   </motion.div>
@@ -89,13 +91,19 @@ const About = () => {
                   <div className="flex items-center mb-2.5">
                     <Braces size={12} className="mr-2.5 text-primary/60" />
                     <span className="text-primary/80">const</span>
-                    <span className="ml-2 text-white/60">vision</span>
+                    <span className="text-white/60">experience</span>
                     <span className="ml-2 text-secondary/60">=</span>
                     <span className="ml-2">{'{'}</span>
                   </div>
-                  <div className="ml-6 flex items-center">
-                    <span className="text-white/40 italic">goal:</span>
-                    <span className="ml-2 text-accent/80">'Scalable_Future'</span>
+                  <div className="ml-6 flex flex-col gap-1.5">
+                    <div className="flex items-center">
+                      <span className="text-white/40 italic">projects:</span>
+                      <span className="ml-2 text-accent/80">'10+'</span><span className="text-white/40">,</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-white/40 italic">hackathons:</span>
+                      <span className="ml-2 text-accent/80">'4+'</span>
+                    </div>
                   </div>
                   <div className="flex items-center mt-2.5">
                     <span className="ml-0">{'}'}</span>

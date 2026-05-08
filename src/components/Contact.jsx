@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Send, MapPin, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -52,6 +53,7 @@ const Contact = () => {
     { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/harshitpandya2911/', color: 'lg:hover:bg-[#0077b5]' },
     { name: 'Twitter', icon: <FaTwitter size={20} />, href: 'https://x.com/HarshitP68223', color: 'lg:hover:bg-[#1da1f2]' },
     { name: 'YouTube', icon: <FaYoutube size={20} />, href: 'https://www.youtube.com/@harshitpandya2911', color: 'lg:hover:bg-[#ff0000]' },
+    { name: 'LeetCode', icon: <SiLeetcode size={20} />, href: 'https://leetcode.com/u/harshit_pandya01/', color: 'lg:hover:bg-[#ffa116]' },
   ];
 
   return (

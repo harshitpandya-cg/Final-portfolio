@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
-const harshitPhoto = "/harshit.jpg";
+import profileImage from '../assets/Profile image.jpeg';
+
+const harshitPhoto = profileImage;
 const resumePdf = "https://drive.google.com/file/d/1iOnGN3g0YFzFb_9AxSzG1M7FyRsrc-J8/view";
 
 const Hero = ({ theme, isVisible }) => {
@@ -45,7 +47,7 @@ const Hero = ({ theme, isVisible }) => {
                  width={400}
                  height={400}
                  loading="eager"
-                 fetchpriority="high"
+                 fetchPriority="high"
                  decoding="async"
                  className="w-full h-full object-cover brightness-95 lg:group-hover:brightness-110 lg:group-hover:scale-105 transition-all duration-700 ease-out" 
                />
@@ -74,14 +76,26 @@ const Hero = ({ theme, isVisible }) => {
           transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
           className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1 min-w-0"
         >
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            className="px-6 py-2 rounded-full glass border border-white/5 text-[9px] font-black tracking-[0.5em] text-primary uppercase inline-block mb-10 shadow-lg"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isVisible ? { 
+              opacity: [1, 0.4, 1],
+            } : { opacity: 0 }}
+            transition={{ 
+              opacity: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+              delay: 0.5
+            }}
+            className="flex items-center justify-center md:justify-start gap-2 mb-10"
           >
-            Digital Craftsman
-          </motion.span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.3em]">
+              Open for opportunities
+            </span>
+          </motion.div>
+
           <h1 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[8.5rem] font-black tracking-tighter leading-[0.85] mb-12">
             Harshit <br />
             <span className="text-gradient">Pandya</span>

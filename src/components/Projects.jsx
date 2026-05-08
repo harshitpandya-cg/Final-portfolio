@@ -269,7 +269,7 @@ const Projects = () => {
 
         {/* Project Sections */}
         <div className="space-y-12">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {/* UI/UX Clone Projects */}
             {(filter === 'all' || filter === 'ui-ux') && (
               <motion.div
