@@ -136,37 +136,71 @@ const Skills = () => {
             <motion.div
               key={cat.title}
               variants={itemVariants}
-              whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 
-                y: -10,
-                transition: { duration: 0.3 }
-              } : {}}
-              className="glass-card p-10 rounded-[40px] border border-white/5 relative group overflow-hidden min-h-[400px] flex flex-col"
+              className="relative min-h-[400px] w-full [perspective:1000px]"
             >
-              {/* Animated background glow */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-              
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 lg:group-hover:scale-110 lg:group-hover:bg-white/10 lg:group-hover:border-primary/30 transition-all duration-500 text-3xl shadow-xl shadow-black/20">
-                  {cat.icon}
+              <motion.div
+                className="w-full h-full relative [transform-style:preserve-3d] rounded-[40px] shadow-2xl transition-shadow duration-500 hover:shadow-primary/20 cursor-pointer"
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                variants={{
+                  rest: { rotateY: 0, y: 0, scale: 1 },
+                  hover: { 
+                    rotateY: 180, 
+                    y: -10, 
+                    scale: 1.03,
+                    transition: { duration: 0.7, ease: "easeInOut" }
+                  }
+                }}
+              >
+                {/* Front Side */}
+                <div className="absolute inset-0 w-full h-full glass-card p-10 rounded-[40px] flex flex-col items-center justify-center [backface-visibility:hidden] overflow-hidden group">
+                  {/* Subtle Shimmer Sweep */}
+                  <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
+                  
+                  {/* Neon Glow Border */}
+                  <div className="absolute -inset-[2px] rounded-[42px] bg-gradient-to-br from-primary/30 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md -z-10"></div>
+                  
+                  <motion.div 
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-24 h-24 rounded-3xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 text-5xl shadow-[0_0_30px_rgba(20,184,166,0.15)] group-hover:border-primary/40 group-hover:shadow-[0_0_40px_rgba(20,184,166,0.3)] transition-all duration-500"
+                  >
+                    {cat.icon}
+                  </motion.div>
+                  <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-primary transition-colors duration-300 tracking-tight text-center">{cat.title}</h3>
+                  <p className="text-white/40 text-sm font-medium tracking-widest uppercase">Hover to explore skills</p>
                 </div>
-                <h3 className="text-2xl font-bold mb-8 text-white lg:group-hover:text-primary transition-colors duration-300 tracking-tight">{cat.title}</h3>
-                <div className="flex flex-wrap gap-3">
-                  {cat.skills.map((skill) => (
-                    <motion.span 
-                      key={skill.name} 
-                      whileHover={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 
-                        scale: 1.1,
-                        backgroundColor: "rgba(255, 255, 255, 0.12)",
-                        borderColor: "rgba(255, 255, 255, 0.2)"
-                      } : {}}
-                      className="px-4 py-2 rounded-2xl bg-white/5 text-[10px] font-bold tracking-wider uppercase text-white/60 transition-all border border-white/5 cursor-default flex items-center gap-2.5 backdrop-blur-md shadow-sm"
-                    >
-                      {skill.icon && <span className="flex items-center justify-center">{skill.icon}</span>}
-                      {skill.name}
-                    </motion.span>
-                  ))}
+
+                {/* Back Side */}
+                <div className="absolute inset-0 w-full h-full glass-card p-8 rounded-[40px] [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-y-auto hidden-scrollbar flex flex-col border border-white/10 bg-white/[0.03]">
+                  <h3 className="text-xl font-bold mb-6 text-white/90 text-center tracking-tight border-b border-white/10 pb-4">{cat.title} Skills</h3>
+                  <motion.div 
+                    className="flex flex-wrap gap-3 justify-center items-center h-full content-center"
+                    variants={{
+                      rest: { opacity: 1 },
+                      hover: { 
+                        opacity: 1, 
+                        transition: { staggerChildren: 0.05, delayChildren: 0.3 } 
+                      }
+                    }}
+                  >
+                    {cat.skills.map((skill, i) => (
+                      <motion.span 
+                        key={skill.name} 
+                        variants={{
+                          rest: { opacity: 0, scale: 0.8 },
+                          hover: { opacity: 1, scale: 1 }
+                        }}
+                        className="px-4 py-2.5 rounded-2xl bg-white/10 text-xs font-bold tracking-wider uppercase text-white/80 border border-white/10 flex items-center gap-2 backdrop-blur-md shadow-lg"
+                      >
+                        {skill.icon && <span className="flex items-center justify-center scale-110">{skill.icon}</span>}
+                        {skill.name}
+                      </motion.span>
+                    ))}
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

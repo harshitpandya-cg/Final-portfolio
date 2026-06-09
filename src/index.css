@@ -6,6 +6,7 @@
   --color-accent: #6366f1; /* Indigo */
   --color-dark: var(--bg-color);
   --color-white: var(--text-color);
+  --font-sans: 'Playfair Display', serif;
 }
 
 :root {
@@ -53,7 +54,7 @@
 }
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Playfair Display', serif;
   line-height: 1.6;
   font-weight: 400;
 
