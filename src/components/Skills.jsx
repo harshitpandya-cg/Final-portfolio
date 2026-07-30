@@ -139,22 +139,25 @@ const Skills = () => {
               className="relative min-h-[400px] w-full [perspective:1000px]"
             >
               <motion.div
-                className="w-full h-full relative [transform-style:preserve-3d] rounded-[40px] shadow-2xl transition-shadow duration-500 hover:shadow-primary/20 cursor-pointer"
+                className="w-full h-full group"
                 initial="rest"
                 whileHover="hover"
                 animate="rest"
-                variants={{
-                  rest: { rotateY: 0, y: 0, scale: 1 },
-                  hover: { 
-                    rotateY: 180, 
-                    y: -10, 
-                    scale: 1.03,
-                    transition: { duration: 0.7, ease: "easeInOut" }
-                  }
-                }}
               >
-                {/* Front Side */}
-                <div className="absolute inset-0 w-full h-full glass-card p-10 rounded-[40px] flex flex-col items-center justify-center [backface-visibility:hidden] overflow-hidden group">
+                <motion.div
+                  className="w-full h-full relative [transform-style:preserve-3d] rounded-[40px] shadow-2xl transition-shadow duration-500 group-hover:shadow-primary/20 cursor-pointer"
+                  variants={{
+                    rest: { rotateY: 0, y: 0, scale: 1 },
+                    hover: { 
+                      rotateY: 180, 
+                      y: -10, 
+                      scale: 1.03,
+                      transition: { duration: 0.7, ease: "easeInOut" }
+                    }
+                  }}
+                >
+                  {/* Front Side */}
+                  <div className="absolute inset-0 w-full h-full bg-white/[0.02] bg-gradient-to-br from-primary/5 to-transparent backdrop-blur-xl border border-white/10 p-10 rounded-[40px] flex flex-col items-center justify-center [backface-visibility:hidden] overflow-hidden shadow-xl">
                   {/* Subtle Shimmer Sweep */}
                   <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
                   
@@ -173,33 +176,36 @@ const Skills = () => {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 w-full h-full glass-card p-8 rounded-[40px] [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-y-auto hidden-scrollbar flex flex-col border border-white/10 bg-white/[0.03]">
+                <div className="absolute inset-0 w-full h-full bg-white/[0.05] bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-8 rounded-[40px] [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-y-auto hidden-scrollbar flex flex-col shadow-xl">
                   <h3 className="text-xl font-bold mb-6 text-white/90 text-center tracking-tight border-b border-white/10 pb-4">{cat.title} Skills</h3>
-                  <motion.div 
-                    className="flex flex-wrap gap-3 justify-center items-center h-full content-center"
-                    variants={{
-                      rest: { opacity: 1 },
-                      hover: { 
-                        opacity: 1, 
-                        transition: { staggerChildren: 0.05, delayChildren: 0.3 } 
-                      }
-                    }}
-                  >
+                  <div className="flex flex-wrap gap-3 justify-center content-start pt-2 pb-6">
                     {cat.skills.map((skill, i) => (
-                      <motion.span 
+                      <motion.div 
                         key={skill.name} 
-                        variants={{
-                          rest: { opacity: 0, scale: 0.8 },
-                          hover: { opacity: 1, scale: 1 }
-                        }}
-                        className="px-4 py-2.5 rounded-2xl bg-white/10 text-xs font-bold tracking-wider uppercase text-white/80 border border-white/10 flex items-center gap-2 backdrop-blur-md shadow-lg"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group relative px-4 py-2.5 rounded-lg bg-[#050505]/80 text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/70 border border-white/10 flex items-center gap-2.5 cursor-pointer overflow-hidden transition-all duration-300 hover:border-primary/50 hover:text-white hover:bg-primary/5 hover:shadow-[0_0_15px_rgba(20,184,166,0.25)]"
                       >
-                        {skill.icon && <span className="flex items-center justify-center scale-110">{skill.icon}</span>}
-                        {skill.name}
-                      </motion.span>
+                        {/* Tech sweep effect */}
+                        <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-primary/20 to-transparent skew-x-12 group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></div>
+                        {/* Neon accent edge */}
+                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></div>
+
+                        {skill.icon && (
+                          <span className="relative z-10 flex items-center justify-center scale-125 opacity-90 group-hover:opacity-100 transition-opacity">
+                            {skill.icon}
+                          </span>
+                        )}
+                        <span className="relative z-10 flex items-center gap-1.5 pt-[1px]">
+                          <span className="text-primary/30 group-hover:text-primary transition-colors duration-300 font-bold text-sm leading-none">{'['}</span>
+                          <span className="group-hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)] transition-all">{skill.name}</span>
+                          <span className="text-primary/30 group-hover:text-primary transition-colors duration-300 font-bold text-sm leading-none">{']'}</span>
+                        </span>
+                      </motion.div>
                     ))}
-                  </motion.div>
+                  </div>
                 </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           ))}

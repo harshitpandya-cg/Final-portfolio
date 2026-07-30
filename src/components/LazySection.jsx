@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
  * LazySection component that only renders its children when it enters the viewport.
  * This significantly improves TBT (Total Blocking Time) and initial Page Load.
  */
-const LazySection = ({ children, threshold = 0.1, rootMargin = '200px' }) => {
+const LazySection = ({ children, threshold = 0.01, rootMargin = '600px' }) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -31,7 +31,10 @@ const LazySection = ({ children, threshold = 0.1, rootMargin = '200px' }) => {
   }, [threshold, rootMargin]);
 
   return (
-    <div ref={sectionRef} className="min-h-[200px]">
+    <div 
+      ref={sectionRef} 
+      className={`min-h-[50vh] w-full transition-opacity duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       {isVisible ? children : null}
     </div>
   );
