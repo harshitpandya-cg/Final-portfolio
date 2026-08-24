@@ -4,8 +4,10 @@ import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
 import profileImage from '../assets/Profile image.jpeg';
 
+import resumeFile from '../assets/Harshit Pandya Resume(edited).pdf.pdf';
+
 const harshitPhoto = profileImage;
-const resumePdf = "https://drive.google.com/file/d/1iOnGN3g0YFzFb_9AxSzG1M7FyRsrc-J8/view";
+const resumePdf = resumeFile;
 
 const Hero = ({ theme, isVisible }) => {
   const heroProfile = harshitPhoto;
