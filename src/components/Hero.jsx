@@ -4,7 +4,7 @@ import { ChevronDown, ArrowRight, Download, Eye } from 'lucide-react';
 
 import profileImage from '../assets/Profile image.jpeg';
 
-import resumeFile from '../assets/Harshit Pandya Resume(edited).pdf.pdf';
+import resumeFile from '../assets/Harshit Pandya Resume.pdf (1).pdf';
 
 const harshitPhoto = profileImage;
 const resumePdf = resumeFile;
