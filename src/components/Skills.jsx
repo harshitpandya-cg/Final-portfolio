@@ -188,8 +188,6 @@ const Skills = () => {
                       >
                         {/* Tech sweep effect */}
                         <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-primary/20 to-transparent skew-x-12 group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></div>
-                        {/* Neon accent edge */}
-                        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"></div>
 
                         {skill.icon && (
                           <span className="relative z-10 flex items-center justify-center scale-125 opacity-90 group-hover:opacity-100 transition-opacity">
