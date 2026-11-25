@@ -1,73 +1,100 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <!-- Basic -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#030014" />
-    <!-- Title (VERY IMPORTANT for ranking) -->
-    <title>Harshit Pandya | Full Stack Developer</title>
-    <!-- SEO Meta -->
-    <meta name="description" content="Harshit Pandya is a Full Stack developer from India specializing in React, UI/UX, and modern web applications. Explore projects, skills, and hackathon achievements.">
-    <meta name="keywords" content="Harshit Pandya, Full Stack Developer India, React Developer Portfolio, UI Developer, Web Developer Portfolio India">
-    <meta name="author" content="Harshit Pandya">
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://harshit-pandya-portfolio.vercel.app/" />
-    <!-- Favicon (FIXED) -->
-    <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Harshit Pandya | Frontend Developer Portfolio">
-    <meta property="og:description" content="React Developer | UI/UX | Modern Web Apps. View projects and achievements.">
-    <meta property="og:image" content="https://harshit-pandya-portfolio.vercel.app/preview.png">
-    <meta property="og:url" content="https://harshit-pandya-portfolio.vercel.app/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Harshit Portfolio">
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Harshit Pandya Portfolio">
-    <meta name="twitter:description" content="Full Stack Developer | React | node | C++">
-    <meta name="twitter:image" content="https://harshit-pandya-portfolio.vercel.app/preview.png">
-    <!-- Robots -->
-    <meta name="robots" content="index, follow">
-    <!-- Structured Data (VERY POWERFUL) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Harshit Pandya",
-      "url": "https://harshit-pandya-portfolio.vercel.app/",
-      "image": "https://harshit-pandya-portfolio.vercel.app/profile.jpeg",
-      "sameAs": [
-        "https://github.com/harshitpandya-cg",
-        "https://www.linkedin.com/in/harshitpandya2911/",
-        "https://leetcode.com/u/harshit_pandya01/"
-      ],
-      "jobTitle": "Full Stack Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance"
-      },
-      "knowsAbout": [
-        "React",
-        "Tailwind",
-        "node.js",
-        "express.js",
-        "C++",
-        "firebase",
-        "Web Development",
-        "UI/UX Design"
-      ]
-    }
-    </script>
-    <!-- Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-  </head>
-  <body class="bg-[#030014] text-white">
-    <div id="root"></div>
-    <!-- React Entry -->
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B08" />
+
+  <!-- Synchronous theme mode initialization to eliminate flash of unstyled theme -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme-mode');
+        var mode = saved === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-mode', mode);
+        var metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) metaTheme.setAttribute('content', mode === 'light' ? '#F3F1EC' : '#0B0B08');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Title -->
+  <title>Harshit Pandya | Full-Stack Developer & UI/UX Designer</title>
+  <!-- SEO Meta -->
+  <meta name="description"
+    content="Full-stack developer and UI/UX designer from Gandhinagar, crafting fast, polished web apps from first wireframe to live deploy.">
+  <meta name="keywords"
+    content="Harshit Pandya, Full-Stack Developer Gandhinagar, UI/UX Designer India, React Developer, Web Developer Portfolio Gandhinagar">
+  <meta name="author" content="Harshit Pandya">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://harshit-pandya-portfolio.vercel.app/" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Harshit Pandya | Full-Stack Developer & UI/UX Designer">
+  <meta property="og:description" content="Full-stack developer and UI/UX designer from Gandhinagar, crafting fast, polished web apps from first wireframe to live deploy.">
+  <meta property="og:image" content="https://harshit-pandya-portfolio.vercel.app/preview.png">
+  <meta property="og:url" content="https://harshit-pandya-portfolio.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Harshit Pandya Portfolio">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Harshit Pandya | Full-Stack Developer & UI/UX Designer">
+  <meta name="twitter:description" content="Full-stack developer and UI/UX designer from Gandhinagar, crafting fast, polished web apps from first wireframe to live deploy.">
+  <meta name="twitter:image" content="https://harshit-pandya-portfolio.vercel.app/preview.png">
+  <!-- Robots -->
+  <meta name="robots" content="index, follow">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Harshit Pandya",
+  "url": "https://harshit-pandya-portfolio.vercel.app/",
+  "image": "https://harshit-pandya-portfolio.vercel.app/profile.jpeg",
+  "email": "harshitpandya073@gmail.com",
+  "telephone": "+919428938303",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Gandhinagar",
+    "addressRegion": "Gujarat",
+    "addressCountry": "India"
+  },
+  "sameAs": [
+    "https://www.youtube.com/@harshitpandya2911",
+    "https://github.com/harshitpandya-cg",
+    "https://www.linkedin.com/in/harshitpandya2911/",
+    "https://leetcode.com/u/harshit_pandya01/",
+    "https://x.com/HarshitP68223"
+  ],
+  "jobTitle": "Full-Stack Developer & UI/UX Designer",
+  "alumniOf": "CodingGita",
+  "knowsAbout": [
+    "React",
+    "Tailwind CSS",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "C++",
+    "Three.js",
+    "Web Development",
+    "UI/UX Design"
+  ]
+}
+</script>
+
+  <!-- Performance & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-[#0B0B08] text-[#E6E4DE] antialiased selection:bg-[#F0552D] selection:text-[#0B0B08] overflow-x-clip">
+  <div id="root"></div>
+  <!-- React Entry -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
