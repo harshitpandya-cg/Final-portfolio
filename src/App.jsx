@@ -1,116 +1,143 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
+import CustomCursor from './components/CustomCursor';
+import WireframeLoader from './components/WireframeLoader';
+import ThemeSwitch from './components/ThemeSwitch';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import LazySection from './components/LazySection';
-import IntroAnimation from './components/IntroAnimation';
-
-// Individual Lazy Imports
-const About = React.lazy(() => import('./components/About'));
-const Skills = React.lazy(() => import('./components/Skills'));
-const Projects = React.lazy(() => import('./components/Projects'));
-const Services = React.lazy(() => import('./components/Services'));
-const Education = React.lazy(() => import('./components/Education'));
-const Certificates = React.lazy(() => import('./components/Certificates'));
-const HackathonJourney = React.lazy(() => import('./components/HackathonJourney'));
-const Achievements = React.lazy(() => import('./components/Achievements'));
-const Contact = React.lazy(() => import('./components/Contact'));
-const Footer = React.lazy(() => import('./components/Footer'));
-const TechBackground = React.lazy(() => import('./components/TechBackground'));
+import Work from './components/Work';
+import AboutProcess from './components/AboutProcess';
+import Skills from './components/Skills';
+import HighlightsCarousel from './components/HighlightsCarousel';
+import Honors from './components/Honors';
+import ServicesAcademics from './components/ServicesAcademics';
+import Stats from './components/Stats';
+import Footer from './components/Footer';
+import { smoothScrollTo } from './utils/smoothScroll';
 
 const App = () => {
-  const [showWelcome, setShowWelcome] = useState(true);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'dark';
-    try { return localStorage.getItem('theme') || 'dark'; } catch { return 'dark'; }
-  });
+  const [loading, setLoading] = useState(true);
 
+  // Initialize Lenis smooth scroll
   useEffect(() => {
-    document.documentElement.classList.toggle('light', theme === 'light');
-    try { localStorage.setItem('theme', theme); } catch (e) {}
-  }, [theme]);
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+    });
 
-  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    window.lenis = lenis;
 
-  useEffect(() => {
-    // Efficient scroll handling
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setShowScrollTop(window.scrollY > 500);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    const animId = requestAnimationFrame(raf);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(animId);
+      lenis.destroy();
+      delete window.lenis;
     };
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Global anchor click interception for smooth cinematic scroll
+  useEffect(() => {
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+
+      // Only intercept in-page hash links (e.g., "#work", "#", "#contact")
+      if (href.startsWith('#')) {
+        e.preventDefault();
+
+        // While modal is open, clicks must do nothing
+        if (window.__isModalOpen || document.body.dataset.modalOpen === 'true') {
+          return;
+        }
+
+        smoothScrollTo(href);
+      }
+    };
+
+    const handleHashChange = (e) => {
+      // If modal is open, prevent hash updates in the address bar
+      if (window.__isModalOpen || document.body.dataset.modalOpen === 'true') {
+        e.preventDefault();
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   return (
     <>
-      <AnimatePresence>
-        {showWelcome && (
-          <IntroAnimation 
-            onComplete={() => setShowWelcome(false)} 
-          />
-        )}
-      </AnimatePresence>
+      {/* Wireframe Outline Loader with Degree Counter */}
+      {loading && <WireframeLoader onComplete={() => setLoading(false)} />}
 
-      <div className="min-h-screen selection:bg-primary selection:text-white relative bg-[#030014] text-white">
-        
-        {/* Only mount background after preloader is gone to save TBT */}
-        <Suspense fallback={null}>
-          {!showWelcome && <TechBackground theme={theme} />}
-        </Suspense>
-        
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
-        
-        <main className="relative z-10">
-          <Hero theme={theme} isVisible={!showWelcome} />
+      {/* Lerped Shard/Diamond Cursor */}
+      <CustomCursor />
+
+      {/* Subtle Film-Grain Overlay */}
+      <div className="noise-overlay" aria-hidden="true" />
+
+      {/* Site Frame with 24px Rounded Corners */}
+      <div className="min-h-screen bg-[var(--bg-primary,#0B0B08)] p-2 sm:p-3 md:p-4 transition-colors duration-300">
+        <div className="site-frame min-h-screen relative bg-[var(--bg-primary,#0B0B08)] transition-colors duration-300">
           
-          <LazySection><Suspense fallback={null}><About /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Skills /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Projects /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Certificates /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><HackathonJourney /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Achievements /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Services /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Education /></Suspense></LazySection>
-          <LazySection><Suspense fallback={null}><Contact /></Suspense></LazySection>
-        </main>
-        
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
+          {/* Hanging Light-Bulb Pull Cord Theme Switch (Fixed Top-Right) */}
+          <ThemeSwitch />
 
-        <AnimatePresence>
-          {showScrollTop && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={scrollToTop}
-              className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-primary/90 text-dark shadow-2xl transition-all cursor-pointer border border-primary/20 backdrop-blur-md"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={24} />
-            </motion.button>
-          )}
-        </AnimatePresence>
+          {/* Fixed Navigation */}
+          <Navbar />
+
+          {/* Main Layout Following Exact Approved Section Sequence */}
+          <main className="relative w-full">
+            {/* 01. Hero (Pinned, Dark #0B0B08, 300vh, 3D Monogram, 3-Beat Story) */}
+            <Hero />
+
+            {/* 02. Work / Projects (Paper #E6E4DE) */}
+            <Work />
+
+            {/* 03. About & Process (Paper → Ink Blueprint + Diagonal Slash Reveal) */}
+            <AboutProcess />
+
+            {/* 04. Skills / Arsenal (Ink #0B0B08) */}
+            <Skills />
+
+            {/* 05. Highlights & Recognition Quote Carousel (Paper #E6E4DE) */}
+            <HighlightsCarousel />
+
+            {/* 06. Honors, Hackathons & Certificates (Paper #E6E4DE) */}
+            <Honors />
+
+            {/* 07. Services & Academics (Ink #0B0B08) */}
+            <ServicesAcademics />
+
+            {/* 08. Stats (Paper #E6E4DE, Ruled Rows with Count-Up, Near the End) */}
+            <Stats />
+
+            {/* 09. Footer / Get In Touch (Ink #0B0B08) */}
+            <Footer />
+          </main>
+
+        </div>
       </div>
     </>
   );
-}
+};
 
 export default App;
