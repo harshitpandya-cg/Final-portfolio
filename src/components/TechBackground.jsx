@@ -1,5 +1,9 @@
 import React from 'react';
 
+const technologies = [
+  'React', 'Node.js', 'Python', 'JavaScript', 'Tailwind', 'MongoDB'
+];
+
 const TechBackground = ({ theme }) => {
   const [isMobile, setIsMobile] = React.useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
@@ -9,10 +13,6 @@ const TechBackground = ({ theme }) => {
     window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  const technologies = [
-    'React', 'Node.js', 'Python', 'JavaScript', 'Tailwind', 'MongoDB'
-  ];
 
   const configs = React.useMemo(() => {
     // Drastically reduced counts for massive TBT improvement

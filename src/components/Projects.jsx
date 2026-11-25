@@ -10,6 +10,22 @@ import adilquadriPreview from '../assets/adilquadri-preview.png';
 import hotelRoomsPreview from '../assets/hotel-rooms.png';
 import dashStackPreview from '../assets/dash-stack.png';
 
+const SectionDivider = ({ label }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+    className="flex items-center gap-5 my-14"
+  >
+    <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/15" />
+    <span className="text-sm md:text-lg font-black uppercase tracking-[0.35em] text-secondary px-7 py-2.5 rounded-full border border-secondary/25 bg-secondary/5 whitespace-nowrap">
+      {label}
+    </span>
+    <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/15" />
+  </motion.div>
+);
+
 const Projects = () => {
   const [filter, setFilter] = useState('all');
 
@@ -116,7 +132,7 @@ const Projects = () => {
           decoding="async"
           width={600}
           height={375}
-          className="w-full h-full object-cover brightness-[0.85] lg:group-hover:brightness-50 lg:group-hover:scale-105 transition-all duration-700 ease-out"
+          className="w-full h-full object-cover lg:group-hover:scale-105 transition-all duration-700 ease-out"
         />
         {/* Overlay buttons */}
         <div className="absolute inset-0 flex items-center justify-center gap-3 flex-wrap px-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400">
@@ -197,22 +213,6 @@ const Projects = () => {
           ))}
         </div>
       </div>
-    </motion.div>
-  );
-
-  const SectionDivider = ({ label }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="flex items-center gap-5 my-14"
-    >
-      <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/15" />
-      <span className="text-sm md:text-lg font-black uppercase tracking-[0.35em] text-secondary px-7 py-2.5 rounded-full border border-secondary/25 bg-secondary/5 whitespace-nowrap">
-        {label}
-      </span>
-      <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/15" />
     </motion.div>
   );
 

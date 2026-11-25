@@ -100,7 +100,7 @@ const Achievements = () => {
               loading="lazy"
               width={800}
               height={600}
-              className="absolute inset-0 w-full h-full object-cover brightness-80"
+              className="absolute inset-0 w-full h-full object-cover"
             />
 
             {/* Overlay gradient */}

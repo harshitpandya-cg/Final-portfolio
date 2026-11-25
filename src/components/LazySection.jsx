@@ -9,6 +9,7 @@ const LazySection = ({ children, threshold = 0.01, rootMargin = '600px' }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const current = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,13 +20,13 @@ const LazySection = ({ children, threshold = 0.01, rootMargin = '600px' }) => {
       { threshold, rootMargin }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (current) {
+      observer.observe(current);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (current) {
+        observer.unobserve(current);
       }
     };
   }, [threshold, rootMargin]);

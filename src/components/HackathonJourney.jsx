@@ -205,7 +205,7 @@ const HackathonJourney = () => {
                 decoding="async"
                 width={800}
                 height={600}
-                className="absolute inset-0 w-full h-full object-cover brightness-75"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </AnimatePresence>
 
